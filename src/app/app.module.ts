@@ -7,6 +7,7 @@ import { AusgabenComponent } from './ausgaben/ausgaben.component';
 import { UebersichtComponent } from './uebersicht/uebersicht.component';
 import { BudgetsComponent } from './budgets/budgets.component';
 import { ErfolgeComponent } from './erfolge/erfolge.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ErfolgeComponent } from './erfolge/erfolge.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
