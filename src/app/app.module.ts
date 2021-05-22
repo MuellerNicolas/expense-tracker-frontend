@@ -7,6 +7,13 @@ import { AusgabenComponent } from './ausgaben/ausgaben.component';
 import { UebersichtComponent } from './uebersicht/uebersicht.component';
 import { BudgetsComponent } from './budgets/budgets.component';
 import { ErfolgeComponent } from './erfolge/erfolge.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +25,13 @@ import { ErfolgeComponent } from './erfolge/erfolge.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

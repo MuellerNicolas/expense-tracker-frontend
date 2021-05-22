@@ -1,10 +1,30 @@
-<h1>App-Component</h1>
-<nav>
-  <ul>
-    <li><a routerLink="/uebersicht" routerLinkActive="active">Übersicht</a></li>
-    <li><a routerLink="/ausgaben" routerLinkActive="active">Ausgaben</a></li>
-    <li><a routerLink="/budgets" routerLinkActive="active">Budgets</a></li>
-    <li><a routerLink="/erfolge" routerLinkActive="active">Erfolge</a></li>
-  </ul>
-</nav>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <div fxShow="true" fxHide.gt-sm="true">
+    <button (click)="sidenav.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <a mat-button class="name" routerLink="/">
+    <span>Expense-Tracker</span>
+  </a>
+  <span class="space-between"></span>
+  <div fxShow="true" fxHide.lt-md="true">
+    <a routerLink="/uebersicht" mat-button>Übersicht</a>
+    <a routerLink="/ausgaben" mat-button>Ausgaben</a>
+    <a routerLink="/budgets" mat-button>Budgets</a>
+    <a routerLink="/erfolge" mat-button>Erfolge</a>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container fxFlexFill>
+  <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+    <div fxLayout="column">
+      <a routerLink="/uebersicht" mat-button>Übersicht</a>
+      <a routerLink="/ausgaben" mat-button>Ausgaben</a>
+      <a routerLink="/budgets" mat-button>Budgets</a>
+      <a routerLink="/erfolge" mat-button>Erfolge</a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content fxFlexFill>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
