@@ -1,8 +1,5 @@
 name: CI Expense-Tracker through Github Actions
-on:
-  push:
-    - main
-  pull_request:
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
