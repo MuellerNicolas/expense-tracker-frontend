@@ -1,0 +1,10 @@
+@import '../../styles.scss';
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.mat-content:only-child {
+    margin-right: 8px;
+}

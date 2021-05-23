@@ -13,7 +13,10 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { PunktZuKommaPipe } from './shared/punkt-zu-komma.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     AusgabenComponent,
     UebersichtComponent,
     BudgetsComponent,
-    ErfolgeComponent
+    ErfolgeComponent,
+    PunktZuKommaPipe,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

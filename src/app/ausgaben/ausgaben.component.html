@@ -1,1 +1,23 @@
-<p>ausgaben works!</p>
+<h1>Ihre Ausgaben:</h1>
+
+<!-- https://material.angular.io/components/expansion/overview -->
+
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let ausgabe of ausgaben">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          {{ausgabe.datum?.getDate()}}.{{ausgabe.datum?.getMonth()}}.{{ausgabe.datum?.getFullYear()}}
+        </mat-panel-description>
+        <mat-panel-description>
+          {{ausgabe.name}}
+        </mat-panel-description>
+        <mat-panel-description>
+          {{ausgabe.betrag | punktZuKomma}} {{ausgabe.waehrung}}
+        </mat-panel-description>
+        <mat-panel-description>
+          {{ausgabe.kategorie}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>This is the primary content of the panel.</p>
+    </mat-expansion-panel>
+  </mat-accordion>
