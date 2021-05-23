@@ -14,7 +14,7 @@ export const AUSGABEN: Ausgabe[] = [
       "name": "Brot",
       "betrag": 1.5,
       "waehrung": "€",
-      "kategorie": "Essen & Trinken",
+      "kategorie": "Essen und Trinken",
       "datum": new Date("December 18, 1995 03:24:00")
     },
     {
@@ -22,7 +22,7 @@ export const AUSGABEN: Ausgabe[] = [
       "name": "Wein",
       "betrag": 3.5,
       "waehrung": "€",
-      "kategorie": "Essen & Trinken",
+      "kategorie": "Essen und Trinken",
       "datum": new Date("December 19, 1995 03:24:00")
     }
 ]

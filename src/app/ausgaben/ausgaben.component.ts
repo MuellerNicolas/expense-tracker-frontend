@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ausgabe } from '../ausgabe.model';
 import { AUSGABEN } from './ausgaben-mock';
-import { PunktZuKommaPipe } from '../shared/punkt-zu-komma.pipe';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ausgaben',
@@ -11,6 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AusgabenComponent implements OnInit {
   ausgaben: Ausgabe[] = AUSGABEN;
+  neueAusgabe: Ausgabe = new Ausgabe();
+  kategorien: String[] = ["Essen und Trinken", "Reisen", "Infrastruktur", "Mobilität", "Bekleidung", "Freizeit", "Ausbildung und Studium", "Versicherungen", "Sonstige Ausgaben"];
 
   constructor() {
     // this.ausgaben = [
@@ -21,14 +21,26 @@ export class AusgabenComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+    this.kategorien.sort();
   }
 
-  aktualisiereAusgabe(ausgabe: Ausgabe) {
+  hinzufuegen(ausgabe: Ausgabe) {
+    console.log('Hinzufügen:')
+    console.log(ausgabe);
+    
+    this.ausgaben.push(this.neueAusgabe);
+    this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+    // Hinzufügen resetten
+    this.neueAusgabe = new Ausgabe();
+  }
+
+  aktualisieren(ausgabe: Ausgabe) {
     console.log('Aktualisiere:')
     console.log(ausgabe);
   }
 
-  loescheAusgabe(ausgabe: Ausgabe) {
+  loeschen(ausgabe: Ausgabe) {
     console.log('Lösche:')
     console.log(ausgabe);
   }
