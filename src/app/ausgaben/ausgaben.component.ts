@@ -23,4 +23,14 @@ export class AusgabenComponent implements OnInit {
     
   }
 
+  aktualisiereAusgabe(ausgabe: Ausgabe) {
+    console.log('Aktualisiere:')
+    console.log(ausgabe);
+  }
+
+  loescheAusgabe(ausgabe: Ausgabe) {
+    console.log('Lösche:')
+    console.log(ausgabe);
+  }
+
 }
