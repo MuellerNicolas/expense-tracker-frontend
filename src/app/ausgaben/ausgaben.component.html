@@ -16,39 +16,41 @@
           {{ausgabe.kategorie}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-form-field appearance="outline">
-        <mat-label>Datum</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl></mat-datepicker>
-      </mat-form-field>
-      <br/>
-      <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput type="text" minlength="1" [(ngModel)]="ausgabe.name" name="name" ngDefaultControl>
-        <button mat-button *ngIf="ausgabe.name" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.name=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <br/>
-      <mat-form-field appearance="outline">
-        <mat-label>Betrag</mat-label>
-        <input matInput type="number" min="1" [(ngModel)]="ausgabe.betrag" name="betrag" ngDefaultControl>
-        <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.betrag=0">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <br/>
-      <mat-form-field appearance="outline">
-        <mat-label>Kategorie</mat-label>
-        <input matInput type="text" minlength="1" [(ngModel)]="ausgabe.kategorie" name="kategorie" ngDefaultControl>
-        <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.kategorie=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <br/>
-      <button mat-raised-button color="primary" (click)="aktualisiereAusgabe(ausgabe)">Aktualisieren</button>
-      <span class="einzug"></span>
-      <button mat-raised-button color="warn" (click)="loescheAusgabe(ausgabe)">Löschen</button>
-    </mat-expansion-panel>
+      <form #ausgabeForm="ngForm" (ngSubmit)="aktualisiereAusgabe(ausgabe)">
+        <mat-form-field appearance="outline">
+          <mat-label>Datum</mat-label>
+          <input matInput [matDatepicker]="picker" required [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl></mat-datepicker>
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" required minlength="1" [(ngModel)]="ausgabe.name" name="name">
+          <button mat-button *ngIf="ausgabe.name" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.name=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="outline">
+          <mat-label>Betrag</mat-label>
+          <input matInput type="number" required min="0" [(ngModel)]="ausgabe.betrag" name="betrag">
+          <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.betrag=0">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="outline">
+          <mat-label>Kategorie</mat-label>
+          <input matInput type="text" required minlength="1" [(ngModel)]="ausgabe.kategorie" name="kategorie">
+          <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.kategorie=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <br/>
+        <button mat-raised-button type="submit" [disabled]="!ausgabeForm.form.valid" color="primary">Aktualisieren</button>
+        <span class="einzug"></span>
+        <button mat-raised-button color="warn" (click)="loescheAusgabe(ausgabe)">Löschen</button>
+    </form>
+  </mat-expansion-panel>
 </mat-accordion>

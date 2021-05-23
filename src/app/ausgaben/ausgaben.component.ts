@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ausgabe } from '../ausgabe.model';
 import { AUSGABEN } from './ausgaben-mock';
 import { PunktZuKommaPipe } from '../shared/punkt-zu-komma.pipe';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ausgaben',
@@ -10,7 +11,7 @@ import { PunktZuKommaPipe } from '../shared/punkt-zu-komma.pipe';
 })
 export class AusgabenComponent implements OnInit {
   ausgaben: Ausgabe[] = AUSGABEN;
-  
+
   constructor() {
     // this.ausgaben = [
     //   new Ausgabe(1, "Fahrradpumpe", 10, "€", "Freizeit", new Date("December 17, 1995 03:24:00")),
@@ -20,7 +21,6 @@ export class AusgabenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
   }
 
   aktualisiereAusgabe(ausgabe: Ausgabe) {
