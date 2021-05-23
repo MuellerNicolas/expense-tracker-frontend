@@ -1,7 +1,5 @@
 <h1>Ihre Ausgaben:</h1>
 
-<!-- https://material.angular.io/components/expansion/overview -->
-
 <mat-accordion>
     <mat-expansion-panel *ngFor="let ausgabe of ausgaben">
       <mat-expansion-panel-header>
@@ -18,6 +16,32 @@
           {{ausgabe.kategorie}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Datum</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="ausgabe.datum">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker [(ngModel)]="ausgabe.datum"></mat-datepicker>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" minlength="1" [(ngModel)]="ausgabe.name">
+        <button mat-button *ngIf="ausgabe.name" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.name=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Betrag</mat-label>
+        <input matInput type="number" min="1" [(ngModel)]="ausgabe.betrag">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Kategorie</mat-label>
+        <input matInput type="text" minlength="1" [(ngModel)]="ausgabe.kategorie">
+        <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.name=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
     </mat-expansion-panel>
-  </mat-accordion>
+</mat-accordion>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ausgabe } from '../ausgabe.model';
 import { AUSGABEN } from './ausgaben-mock';
-import { PunktZuKommaPipe } from '../shared/punkt-zu-komma.pipe'
+import { PunktZuKommaPipe } from '../shared/punkt-zu-komma.pipe';
 
 @Component({
   selector: 'ausgaben',
