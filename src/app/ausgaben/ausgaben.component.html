@@ -34,12 +34,15 @@
       <mat-form-field>
         <mat-label>Betrag</mat-label>
         <input matInput type="number" min="1" [(ngModel)]="ausgabe.betrag">
+        <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.betrag=0">
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
       <br/>
       <mat-form-field>
         <mat-label>Kategorie</mat-label>
         <input matInput type="text" minlength="1" [(ngModel)]="ausgabe.kategorie">
-        <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.name=''">
+        <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.kategorie=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
