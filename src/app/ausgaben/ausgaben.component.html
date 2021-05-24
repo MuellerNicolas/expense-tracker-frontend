@@ -2,43 +2,47 @@
 
 <mat-accordion>
   <!-- Neue Ausgabe -->
-  <mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
-      <mat-panel-title>
+      <mat-panel-title id="neue-ausgabe-hinzufuegen">
         Neue Ausgabe hinzufügen
       </mat-panel-title>
     </mat-expansion-panel-header>
     <form #ausgabeForm="ngForm" (ngSubmit)="hinzufuegen(neueAusgabe)">
       <mat-form-field appearance="outline">
         <mat-label>Datum</mat-label>
-        <input matInput [matDatepicker]="picker" required [(ngModel)]="neueAusgabe.datum" name="datum" ngDefaultControl>
+        <input matInput [matDatepicker]="picker" required [(ngModel)]="neueAusgabe.datum" name="datum" ngDefaultControl #datum="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker [(ngModel)]="neueAusgabe.datum" name="datum" ngDefaultControl></mat-datepicker>
+        <mat-error *ngIf="datum.errors?.required">{{getErrorMessage(datum)}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput type="text" required minlength="1" [(ngModel)]="neueAusgabe.name" name="name">
+        <input matInput type="text" required minlength="1" [(ngModel)]="neueAusgabe.name" name="name" #name="ngModel">
         <button mat-button *ngIf="neueAusgabe.name" matSuffix mat-icon-button aria-label="Clear" (click)="neueAusgabe.name=''">
           <mat-icon>close</mat-icon>
         </button>
+        <mat-error *ngIf="name.errors?.required">{{getErrorMessage(name)}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
         <mat-label>Betrag</mat-label>
-        <input matInput type="number" required min="0" [(ngModel)]="neueAusgabe.betrag" name="betrag">
-        <button mat-button *ngIf="neueAusgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="neueAusgabe.betrag=0">
+        <input matInput type="number" required min="0" [(ngModel)]="neueAusgabe.betrag" name="betrag" #betrag="ngModel">
+        <button mat-button *ngIf="neueAusgabe.betrag" matSuffix mat-icon-button aria-label="Clear" (click)="neueAusgabe.betrag=0">
           <mat-icon>close</mat-icon>
         </button>
+        <mat-error *ngIf="betrag.errors">{{getErrorMessage(betrag)}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
         <mat-label>Kategorie</mat-label>
-        <mat-select required [(ngModel)]="neueAusgabe.kategorie" name="kategorie">
+        <mat-select required [(ngModel)]="neueAusgabe.kategorie" name="kategorie" #kategorie="ngModel">
           <mat-option *ngFor="let kategorie of kategorien" value={{kategorie}}>
             {{kategorie}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="kategorie.errors?.required">{{getErrorMessage(kategorie)}}</mat-error>
       </mat-form-field>
       <br/>
       <button mat-raised-button type="submit" [disabled]="!ausgabeForm.form.valid" color="primary">Hinzufügen</button>
@@ -48,50 +52,54 @@
   <!-- Alle Ausgaben -->
   <mat-expansion-panel *ngFor="let ausgabe of ausgaben">
     <mat-expansion-panel-header>
-      <mat-panel-description>
+      <mat-panel-description class="mat-panel-description">
         {{ausgabe.datum?.getDate()}}.{{ausgabe.datum?.getMonth()}}.{{ausgabe.datum?.getFullYear()}}
       </mat-panel-description>
-      <mat-panel-description>
+      <mat-panel-description class="mat-panel-description">
         {{ausgabe.name}}
       </mat-panel-description>
-      <mat-panel-description>
+      <mat-panel-description class="mat-panel-description">
         {{ausgabe.betrag | punktZuKomma}} {{ausgabe.waehrung}}
       </mat-panel-description>
-      <mat-panel-description>
+      <mat-panel-description class="mat-panel-description">
         {{ausgabe.kategorie}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <form #ausgabeForm="ngForm" (ngSubmit)="aktualisieren(ausgabe)">
       <mat-form-field appearance="outline">
         <mat-label>Datum</mat-label>
-        <input matInput [matDatepicker]="picker" required [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl>
+        <input matInput [matDatepicker]="picker" required [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl #datum="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl></mat-datepicker>
+        <mat-error *ngIf="datum.errors?.required">{{getErrorMessage(datum)}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput type="text" required minlength="1" [(ngModel)]="ausgabe.name" name="name">
+        <input matInput type="text" required minlength="1" [(ngModel)]="ausgabe.name" name="name" #name="ngModel">
         <button mat-button *ngIf="ausgabe.name" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.name=''">
           <mat-icon>close</mat-icon>
         </button>
+        <mat-error *ngIf="name.errors?.required">{{getErrorMessage(name)}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
         <mat-label>Betrag</mat-label>
-        <input matInput type="number" required min="0" [(ngModel)]="ausgabe.betrag" name="betrag">
-        <button mat-button *ngIf="ausgabe.kategorie" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.betrag=0">
+        <input matInput type="number" required min="0" [(ngModel)]="ausgabe.betrag" name="betrag" #betrag="ngModel">
+        <button mat-button *ngIf="ausgabe.betrag" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.betrag=0">
           <mat-icon>close</mat-icon>
         </button>
+        <mat-error *ngIf="betrag.errors">{{getErrorMessage(betrag)}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
         <mat-label>Kategorie</mat-label>
-        <mat-select required [(ngModel)]="ausgabe.kategorie" name="kategorie">
+        <mat-select required [(ngModel)]="ausgabe.kategorie" name="kategorie" #kategorie="ngModel">
           <mat-option *ngFor="let kategorie of kategorien" value={{kategorie}}>
             {{kategorie}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="kategorie.errors?.required">{{getErrorMessage(kategorie)}}</mat-error>
       </mat-form-field>
       <br/>
       <button mat-raised-button type="submit" [disabled]="!ausgabeForm.form.valid" color="primary">Aktualisieren</button>

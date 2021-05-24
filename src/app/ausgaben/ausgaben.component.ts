@@ -45,4 +45,12 @@ export class AusgabenComponent implements OnInit {
     console.log(ausgabe);
   }
 
+  getErrorMessage(formField: any){
+    if(formField.hasError("required")) return "Pflichtfeld";
+    if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
+      return "Der Wert darf nicht negativ sein"
+    }
+    else return "";
+  }
+
 }
