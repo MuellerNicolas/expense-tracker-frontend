@@ -12,15 +12,10 @@ export class AusgabenComponent implements OnInit {
   neueAusgabe: Ausgabe = new Ausgabe();
   kategorien: String[] = ["Essen und Trinken", "Reisen", "Infrastruktur", "Mobilität", "Bekleidung", "Freizeit", "Ausbildung und Studium", "Versicherungen", "Sonstige Ausgaben"];
 
-  constructor() {
-    // this.ausgaben = [
-    //   new Ausgabe(1, "Fahrradpumpe", 10, "€", "Freizeit", new Date("December 17, 1995 03:24:00")),
-    //   new Ausgabe(2, "Brot", 1.5, "€", "Essen & Trinken", new Date("December 18, 1995 03:24:00")),
-    //   new Ausgabe(3, "Wein", 3.5, "€", "Essen & Trinken",new Date("December 19, 1995 03:24:00"))
-    // ];
-  }
+  constructor() {}
 
   ngOnInit(): void {
+    // nach Datum sortieren
     this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
     this.kategorien.sort();
   }
@@ -28,28 +23,37 @@ export class AusgabenComponent implements OnInit {
   hinzufuegen(ausgabe: Ausgabe) {
     console.log('Hinzufügen:')
     console.log(ausgabe);
-    
+    // Hinzufügen und nach Datum sortieren
     this.ausgaben.push(this.neueAusgabe);
     this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
-    // Hinzufügen resetten
+    // Hinzufügen-Form resetten
     this.neueAusgabe = new Ausgabe();
   }
 
   aktualisieren(ausgabe: Ausgabe) {
-    console.log('Aktualisiere:')
+    console.warn('Aktualisiere:')
     console.log(ausgabe);
+    // backend-Aufruf zum Aktualisieren
+
   }
 
   loeschen(ausgabe: Ausgabe) {
-    console.log('Lösche:')
+    console.warn('Lösche:')
     console.log(ausgabe);
+    // backend-Aufruf zum Löschen
+
+
+    // frontend-seitiges löschen
+    this.ausgaben = this.ausgaben.filter( einzelneAusgabe => einzelneAusgabe.id !== ausgabe.id );
   }
 
   getErrorMessage(formField: any){
     if(formField.hasError("required")) return "Pflichtfeld";
+
     if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
-      return "Der Wert darf nicht negativ sein"
+      return "Der Wert darf nicht negativ sein";
     }
+
     else return "";
   }
 
