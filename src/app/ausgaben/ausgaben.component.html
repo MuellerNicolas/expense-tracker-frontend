@@ -37,7 +37,7 @@
       <br/>
       <mat-form-field appearance="outline">
         <mat-label>Kategorie</mat-label>
-        <mat-select required [(ngModel)]="neueAusgabe.kategorie" name="kategorie" #kategorie="ngModel">
+        <mat-select required [(ngModel)]="neueAusgabe.kategorie" name="kategorie" #kategorie="ngModel" ngDefaultControl>
           <mat-option *ngFor="let kategorie of kategorien" value={{kategorie}}>
             {{kategorie}}
           </mat-option>
@@ -94,7 +94,7 @@
       <br/>
       <mat-form-field appearance="outline">
         <mat-label>Kategorie</mat-label>
-        <mat-select required [(ngModel)]="ausgabe.kategorie" name="kategorie" #kategorie="ngModel">
+        <mat-select required [(ngModel)]="ausgabe.kategorie" name="kategorie" #kategorie="ngModel" ngDefaultControl>
           <mat-option *ngFor="let kategorie of kategorien" value={{kategorie}}>
             {{kategorie}}
           </mat-option>

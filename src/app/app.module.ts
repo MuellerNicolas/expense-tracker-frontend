@@ -7,6 +7,7 @@ import { AusgabenComponent } from './ausgaben/ausgaben.component';
 import { UebersichtComponent } from './uebersicht/uebersicht.component';
 import { BudgetsComponent } from './budgets/budgets.component';
 import { ErfolgeComponent } from './erfolge/erfolge.component';
+import { PunktZuKommaPipe } from './shared/punkt-zu-komma.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -17,12 +18,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
-import { PunktZuKommaPipe } from './shared/punkt-zu-komma.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -84,7 +84,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatNativeDateModule,
     MatSelectModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }, PunktZuKommaPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
