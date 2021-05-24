@@ -7,7 +7,7 @@ import { AusgabenComponent } from './ausgaben/ausgaben.component';
 import { UebersichtComponent } from './uebersicht/uebersicht.component';
 import { BudgetsComponent } from './budgets/budgets.component';
 import { ErfolgeComponent } from './erfolge/erfolge.component';
-import { PunktZuKommaPipe } from './shared/punkt-zu-komma.pipe';
+import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -55,6 +55,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,9 +63,9 @@ import {OverlayModule} from '@angular/cdk/overlay';
     UebersichtComponent,
     BudgetsComponent,
     ErfolgeComponent,
-    PunktZuKommaPipe,
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -84,7 +85,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatNativeDateModule,
     MatSelectModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }, PunktZuKommaPipe],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

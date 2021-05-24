@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { AppModule } from '../app.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { AusgabenComponent } from './ausgaben.component';
 
@@ -10,7 +10,7 @@ describe('AusgabenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ FormsModule, AppModule ],
+      imports: [ FormsModule, SharedModule ],
       declarations: [ AusgabenComponent ]
     })
     .compileComponents();
