@@ -2,6 +2,8 @@ name: CI Expense-Tracker through Github Actions
 
 on:
   push:
+    branches:
+      - '**'
     tags:
       - v*
   pull_request:
