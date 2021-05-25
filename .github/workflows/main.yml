@@ -1,9 +1,9 @@
 name: CI Expense-Tracker through Github Actions
 on:
   push:
-
-  tags:
-    - v*
+    tags:
+      - v*
+  pull_request:
 
 env:
   IMAGE_NAME: expense-tracker-frontend
