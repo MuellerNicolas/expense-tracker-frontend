@@ -10,41 +10,19 @@ import { BUDGETS } from './budget-mock';
 })
 export class BudgetsComponent implements OnInit {
   budgets: Budget[] = BUDGETS;
-  neueAusgabe: Budget = new Budget();
-  kategorien: String[] = ["Essen und Trinken", "Reisen", "Infrastruktur", "Mobilität", "Bekleidung", "Freizeit", "Ausbildung und Studium", "Versicherungen", "Sonstige Ausgaben"];
 
   constructor() {}
 
   ngOnInit(): void {
-    // nach Datum sortieren
-    this.budgets.sort();
+    // alphabetisch sortieren
+    this.budgets.sort((a: Budget, b: Budget) => a.kategorie!.localeCompare(b.kategorie!));
   }
 
-  hinzufuegen(ausgabe: Budget) {
-    console.log('Hinzufügen:')
-    console.log(ausgabe);
-    // Hinzufügen und nach Datum sortieren
-    this.budgets.push(this.neueAusgabe);
-    
-    // Hinzufügen-Form resetten
-    this.neueAusgabe = new Budget();
-  }
-
-  aktualisieren(ausgabe: Budget) {
+  aktualisieren(budget: Budget) {
     console.warn('Aktualisiere:')
-    console.log(ausgabe);
+    console.log(budget);
     // backend-Aufruf zum Aktualisieren
 
-  }
-
-  loeschen(ausgabe: Budget) {
-    console.warn('Lösche:')
-    console.log(ausgabe);
-    // backend-Aufruf zum Löschen
-
-
-    // frontend-seitiges löschen
-    this.budgets = this.budgets.filter( einzelneAusgabe => einzelneAusgabe.id !== ausgabe.id );
   }
 
   getErrorMessage(formField: any){

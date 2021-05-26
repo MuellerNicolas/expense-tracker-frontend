@@ -17,3 +17,8 @@
         </button>
         <mat-error *ngIf="betrag.errors">{{getErrorMessage(betrag)}}</mat-error>
       </mat-form-field>
+      <br/>
+      <button mat-raised-button type="submit" [disabled]="!budgetForm.form.valid" color="primary">Aktualisieren</button>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>
