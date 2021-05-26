@@ -84,6 +84,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatGridListModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
   bootstrap: [AppComponent]
