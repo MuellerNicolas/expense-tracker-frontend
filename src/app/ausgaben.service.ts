@@ -27,7 +27,7 @@ export class AusgabenService {
 
   constructor(private httpClient: HttpClient) { }
 
-   getAusgaben(): Observable<Ausgabe[]> {
+  getAusgaben(): Observable<Ausgabe[]> {
     return this.httpClient.get<Ausgabe[]>(`${this.backendAPI}/ausgaben`)
     .pipe(
       catchError(this.handleError<Ausgabe[]>('getAusgaben', []))
