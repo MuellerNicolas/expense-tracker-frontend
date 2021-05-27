@@ -13,7 +13,20 @@
 <br/>
 
 <mat-grid-list cols={{breakpoint}} rowHeight="2:1">
-  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-content>
+        <!-- Bild -->
+        <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+        </svg>
+      </mat-card-content>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
   <mat-grid-tile>2</mat-grid-tile>
   <mat-grid-tile>3</mat-grid-tile>
   <mat-grid-tile>4</mat-grid-tile>
