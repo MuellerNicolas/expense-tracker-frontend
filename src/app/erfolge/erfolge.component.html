@@ -1,19 +1,20 @@
 
 
+<!-- Div und flexbox -->
+
 <mat-grid-list cols="1" rowHeight="5:1">
-    
-    <mat-grid-tile> 
-        <mat-icon aria-hidden="false" aria-label="emoji_events icon">emoji_events</mat-icon>
-        Anzahl der Erfolge, in denen du dein Budget eingehalten hast:
-         <label>1</label>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-grid-tile> 
+      <mat-icon aria-hidden="false" aria-label="emoji_events icon">emoji_events</mat-icon>
+      Anzahl der Erfolge, in denen du dein Budget eingehalten hast:
+        <label>1</label>
+  </mat-grid-tile>
+</mat-grid-list>
 
+<br/>
 
-
-  <div class="container"> 
-    <div>Badget 1</div> 
-    <div>Badget 2</div> 
-    <div>Badget 3</div>
-    <div>Badget 4</div> 
-   </div>
+<mat-grid-list cols={{breakpoint}} rowHeight="2:1">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list>
