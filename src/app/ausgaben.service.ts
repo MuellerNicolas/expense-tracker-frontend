@@ -45,14 +45,20 @@ export class AusgabenService {
     return this.httpClient.put<Ausgabe>(`${this.backendAPI}/${ausgabe.id}`, ausgabe, this.httpOptions)
     .pipe(
       catchError(this.handleError<any>('updateAusgabe'))
-    );;
+    );
   }
 
   addAusgabe(ausgabe: Ausgabe): Observable<Ausgabe> {
-    return this.httpClient.post<Ausgabe>(this.backendAPI, ausgabe);
+    return this.httpClient.post<Ausgabe>(this.backendAPI, ausgabe, this.httpOptions)
+    .pipe(
+      catchError(this.handleError<any>('addAusgabe'))
+    );
   }
 
   deleteAusgabe(id: number): Observable<Ausgabe> {
-    return this.httpClient.delete<Ausgabe>(`${this.backendAPI}/${id}`);
+    return this.httpClient.delete<Ausgabe>(`${this.backendAPI}/${id}`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError<any>('deleteAusgabe'))
+    );
   }
 }
