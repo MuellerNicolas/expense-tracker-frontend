@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  backendAPI: "api/ausgaben",
-  // backendAPI: "https://localhost/api/",
+  backendAPI: "api",
+  // backendAPI: "https://localhost/api",
 };
 
 /*
