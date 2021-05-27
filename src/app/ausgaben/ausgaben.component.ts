@@ -22,6 +22,7 @@ export class AusgabenComponent implements OnInit {
   getAusgaben(): void {
     this.ausgabenService.getAusgaben().subscribe(ausgaben => {
       this.ausgaben = ausgaben;
+      this.ausgaben.forEach(ausgabe => ausgabe.datum = new Date(ausgabe.datum!));
       // Nach Datum ordnen
       this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
     });
@@ -30,6 +31,9 @@ export class AusgabenComponent implements OnInit {
   add(ausgabe: Ausgabe): void {
     if(!ausgabe) return;
     this.ausgabenService.addAusgabe(ausgabe).subscribe(ausgabe => {
+      // Datum muss neu erzeugt werden, sonst Typ-Fehler wegen TypeScript
+      let datum = ausgabe.datum?.toString();
+      ausgabe.datum = new Date(datum!);
       // Neue Ausgabe hinzufügen
       this.ausgaben.push(ausgabe);
       // Nach Datum ordnen
