@@ -1,9 +1,18 @@
 mat-grid-tile {
     background: lightblue;
-    max-width: 40em;
-    justify-content: center;
-    align-items: center;
+    max-width: 30em;
   }
 
+  .test{
+    justify-content: center;
+  }
+  
+  .container { 
+    margin-top: 100px;
+    display: grid; 
+    grid-template-rows:200px 1fr 100px; 
+    grid-template-columns:25% 25% 25%;
+    justify-content: center;
+  }
 
   
