@@ -13,7 +13,7 @@ import { UebersichtComponent } from './uebersicht/uebersicht.component';
 import { BudgetsComponent } from './budgets/budgets.component';
 import { ErfolgeComponent } from './erfolge/erfolge.component';
 import { SharedModule } from './shared/shared.module';
-import { AusgabenService } from './ausgaben.service';
+import { AusgabenService } from './ausgaben/ausgaben.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar'

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ausgabe } from '../ausgabe.model';
-import { AusgabenService } from '../ausgaben.service';
+import { Ausgabe } from './ausgabe.model';
+import { AusgabenService } from './ausgaben.service';
 
 @Component({
   selector: 'ausgaben',
