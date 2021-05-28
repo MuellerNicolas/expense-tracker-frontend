@@ -12,9 +12,6 @@ describe('AusgabenComponent', () => {
   let component: AusgabenComponent;
   let fixture: ComponentFixture<AusgabenComponent>;
 
-  // let ausgabenServiceStub: Partial<AusgabenService>;
-  let ausgabenService: AusgabenService;
-  
   beforeEach(async () => {
 
     const ausgabenServiceStub = {
@@ -54,22 +51,9 @@ describe('AusgabenComponent', () => {
       declarations: [ AusgabenComponent ],
       providers: [ {provide: AusgabenService, useValue: ausgabenServiceStub}]
     });
-    // TestBed.overrideComponent(AusgabenComponent, {
-    //   set: {
-    //     providers: [{ provide: AusgabenService, 
-    //       useClass: class {
-    //         getAusgaben = jasmine.createSpy("getAusgaben"); 
-    //       }
-    //     }]
-    //   }
-    // }); 
   
     fixture = TestBed.createComponent(AusgabenComponent);
     component = fixture.componentInstance;
-    // ausgabenService = fixture.debugElement.injector.get(AusgabenService);
-    
-    // ausgabenService = TestBed.inject(AusgabenService);
-
   });
 
   beforeEach(() => {
