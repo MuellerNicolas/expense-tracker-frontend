@@ -1,4 +1,4 @@
-import { Budget } from '../budget.model';
+import { Budget } from './budget.model';
 
 export const BUDGETS: Budget[] = [
     {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { BUDGETS } from './budgets/budget-mock';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +30,7 @@ export class InMemoryDataService implements InMemoryDbService {
         "datum": "December 19, 1995 03:24:00"
       }
     ];
-    return {ausgaben};
+    const budgets = BUDGETS;
+    return {ausgaben, budgets};
   }
 }
