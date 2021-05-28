@@ -1,33 +1,111 @@
+<div class="monatbox">
+  Anzahl der Erfolge, in denen du dein Budget eingehalten hast:
+
+  <label id="erfolge">1</label>
+</div>
+
+<br />
+<br />
+<br />
 
 
-<!-- Div und flexbox -->
-
-<mat-grid-list cols="1" rowHeight="5:1">
-  <mat-grid-tile> 
-      <mat-icon aria-hidden="false" aria-label="emoji_events icon">emoji_events</mat-icon>
-      Anzahl der Erfolge, in denen du dein Budget eingehalten hast:
-        <label>1</label>
-  </mat-grid-tile>
-</mat-grid-list>
-
-<br/>
-
-<mat-grid-list cols={{breakpoint}} rowHeight="2:1">
+<mat-grid-list class="table" cols={{breakpoint}} rowHeight="2:1">
   <mat-grid-tile>
-    <mat-card class="example-card">
+    <mat-card class="card">
       <mat-card-content>
+        <section class="example-section">
+          <mat-progress-bar>
+              class="example-margin"
+              [color]="color"
+              [mode]="mode"
+              [value]="value"
+          </mat-progress-bar>
+        </section>
         <!-- Bild -->
-        <svg style="width:10em;height:10em" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
-        </svg>
+        <div class="circle" id="categorycar">
+          <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+            <path fill="white"
+              d="M16,6L19,10H21C22.11,10 23,10.89 23,12V15H21A3,3 0 0,1 18,18A3,3 0 0,1 15,15H9A3,3 0 0,1 6,18A3,3 0 0,1 3,15H1V12C1,10.89 1.89,10 3,10L6,6H16M10.5,7.5H6.75L4.86,10H10.5V7.5M12,7.5V10H17.14L15.25,7.5H12M6,13.5A1.5,1.5 0 0,0 4.5,15A1.5,1.5 0 0,0 6,16.5A1.5,1.5 0 0,0 7.5,15A1.5,1.5 0 0,0 6,13.5M18,13.5A1.5,1.5 0 0,0 16.5,15A1.5,1.5 0 0,0 18,16.5A1.5,1.5 0 0,0 19.5,15A1.5,1.5 0 0,0 18,13.5Z" />
+          </svg>
+        </div>
       </mat-card-content>
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-title>Mobilität</mat-card-title>
       </mat-card-header>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="card">
+      <mat-card-content>
+        <section class="example-section">
+          <mat-progress-bar>
+              class="example-margin"
+              [color]="color"
+              [mode]="mode"
+              [value]="value"
+          </mat-progress-bar>
+        </section>
+        <!-- Bild -->
+        <div class="circle" id="categoryfood">
+          <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+            <path fill="white"
+              d="M15.5,21L14,8H16.23L15.1,3.46L16.84,3L18.09,8H22L20.5,21H15.5M5,11H10A3,3 0 0,1 13,14H2A3,3 0 0,1 5,11M13,18A3,3 0 0,1 10,21H5A3,3 0 0,1 2,18H13M3,15H8L9.5,16.5L11,15H12A1,1 0 0,1 13,16A1,1 0 0,1 12,17H3A1,1 0 0,1 2,16A1,1 0 0,1 3,15Z" />
+          </svg>
+        </div>
+      </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Essen + Trinken</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="card">
+      <mat-card-content>
+        <section class="example-section">
+          <mat-progress-bar>
+              class="example-margin"
+              [color]="color"
+              [mode]="mode"
+              [value]="value"
+          </mat-progress-bar>
+        </section>
+        <!-- Bild -->
+        <div class="circle" id="categoryhobby">
+          <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+            <path fill="white" d="M17.47 8.67H19V23H17.47V12.6C16.67 12.44 15.92 12.14 15.21 11.71S13.9 10.78 13.39 10.2L12.77 13.27L15 15.47V23H13V17L10.76 14.8L8.89 23H6.73C6.73 23 9.86 7.22 9.89 7.09C10 6.61 10.22 6.24 10.59 6C10.96 5.73 11.33 5.6 11.71 5.6C12.1 5.6 12.46 5.69 12.79 5.87C13.13 6.04 13.39 6.29 13.58 6.61L14.64 8.24C14.93 8.78 15.32 9.25 15.81 9.63S16.86 10.3 17.47 10.5V8.67M8.55 5.89L7.4 5.65C6.83 5.5 6.31 5.62 5.84 5.94C5.38 6.26 5.1 6.7 5 7.28L4.19 11.26C4.16 11.55 4.22 11.81 4.38 12.05C4.54 12.29 4.75 12.42 5 12.46L7.21 12.89L8.55 5.89M13 1C11.9 1 11 1.9 11 3S11.9 5 13 5 15 4.11 15 3 14.11 1 13 1Z" />
+        </svg>
+        </div>
+      </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Freizeit</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="card">
+      <mat-card-content>
+        <section class="example-section">
+          <mat-progress-bar>
+              class="example-margin"
+              [color]="color"
+              [mode]="mode"
+              [value]="value"
+          </mat-progress-bar>
+        </section>
+        <!-- Bild -->
+        <div class="circle" id="categoryinfrastructure">
+          <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+          <path fill="white" d="M11.5,1L2,6V8H21V6M16,10V17H19V10M2,22H21V19H2M10,10V17H13V10M4,10V17H7V10H4Z" />
+        </svg>
+        </div>
+      </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Infrastruktur</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+
 </mat-grid-list>

@@ -9,6 +9,9 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class ErfolgeComponent implements OnInit {
   breakpoint: number;
 
+  
+  value = 50;
+
   bpCols = {
     XSmall: 1,
     Small: 1,

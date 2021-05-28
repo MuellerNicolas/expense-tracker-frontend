@@ -54,7 +54,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-import {OverlayModule} from '@angular/cdk/overlay';
+import {OverlayModule} from '@angular/cdk/overlay'; 
 
 @NgModule({
   declarations: [
@@ -86,6 +86,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatSelectModule,
     MatGridListModule,
     MatCardModule,
+    MatProgressBarModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
   bootstrap: [AppComponent]

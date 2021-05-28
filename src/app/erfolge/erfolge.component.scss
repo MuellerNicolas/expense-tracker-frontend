@@ -1,16 +1,66 @@
 mat-grid-tile {
-    background: lightblue;
     max-width: 30em;
   }
 
-  .test{
-    justify-content: center;
-  }
+ .monatbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color: #e0e0e0;
+  width: 30em;
+  height: 200px;
+  border-radius: 7px;
+  line-height: 120%;
+ }
+
+ .table{
+   height: 10em;
+ }
+
+
+
+ .mat-card-header{
+   justify-content: center;
+ }
   
   .container { 
-    margin-top: 100px;
     display: grid; 
     grid-template-rows:200px 1fr 100px; 
     grid-template-columns:25% 25% 25%;
     justify-content: center;
+  }
+
+  div.circle{
+    width: 150px;
+    height: 150px;
+    
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #categorycar{
+    background-color: #ffbe76;
+  }
+
+  #categoryfood{
+    background-color: #cc8e35;
+  }
+
+  #categoryhobby{
+    background-color: #130f40;
+  }
+
+  #categoryinfrastructure{
+    background-color: #6D214F;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 40px;
   }
