@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Budget } from '../budgets/budget.model';
+import { BudgetsService } from '../budgets/budgets.service';
 import { Ausgabe } from './ausgabe.model';
 import { AusgabenService } from './ausgaben.service';
 
@@ -10,13 +12,15 @@ import { AusgabenService } from './ausgaben.service';
 export class AusgabenComponent implements OnInit {
   ausgaben: Ausgabe[] = [];
   neueAusgabe: Ausgabe = new Ausgabe();
-  kategorien: String[] = ["Essen und Trinken", "Reisen", "Infrastruktur", "Mobilität", "Bekleidung", "Freizeit", "Ausbildung und Studium", "Versicherungen", "Sonstige Ausgaben"];
+  kategorien: String[] = [];
 
-  constructor(private ausgabenService: AusgabenService) {}
+  constructor(private ausgabenService: AusgabenService, private budgetsService: BudgetsService) {}
 
   ngOnInit(): void {
+    // Ausgaben zum Anzeigen der Liste
     this.getAusgaben();
-    this.kategorien.sort();
+    // Kategorien zur Auswahl im Formular
+    this.getKategorien();
   }
 
   getAusgaben(): void {
@@ -25,6 +29,14 @@ export class AusgabenComponent implements OnInit {
       this.ausgaben.forEach(ausgabe => ausgabe.datum = new Date(ausgabe.datum!));
       // Nach Datum ordnen
       this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+    });
+  }
+
+  getKategorien(): void {
+    this.budgetsService.getBudgets().subscribe(budgets => {
+      budgets.forEach((budget: Budget) => this.kategorien.push(budget.kategorie!));
+      // Kategorie alphabetisch ordnen
+      this.kategorien.sort();
     });
   }
 
@@ -55,12 +67,10 @@ export class AusgabenComponent implements OnInit {
   }
 
   getErrorMessage(formField: any): string{
-    if(formField.hasError("required")) {
-      return "Pflichtfeld";
-    } else if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
+    if(formField.hasError("required")) return "Pflichtfeld";
+    if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
       return "Der Wert darf nicht negativ sein";
-    } else {
-      return "";
     }
+    return "";
   }
 }
