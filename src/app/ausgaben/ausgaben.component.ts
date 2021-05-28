@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ausgabe } from '../ausgabe.model';
-import { AUSGABEN } from './ausgaben-mock';
+import { Ausgabe } from './ausgabe.model';
+import { AusgabenService } from './ausgaben.service';
 
 @Component({
   selector: 'ausgaben',
@@ -8,53 +8,59 @@ import { AUSGABEN } from './ausgaben-mock';
   styleUrls: ['./ausgaben.component.scss']
 })
 export class AusgabenComponent implements OnInit {
-  ausgaben: Ausgabe[] = AUSGABEN;
+  ausgaben: Ausgabe[] = [];
   neueAusgabe: Ausgabe = new Ausgabe();
   kategorien: String[] = ["Essen und Trinken", "Reisen", "Infrastruktur", "Mobilität", "Bekleidung", "Freizeit", "Ausbildung und Studium", "Versicherungen", "Sonstige Ausgaben"];
 
-  constructor() {}
+  constructor(private ausgabenService: AusgabenService) {}
 
   ngOnInit(): void {
-    // nach Datum sortieren
-    this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+    this.getAusgaben();
     this.kategorien.sort();
   }
 
-  hinzufuegen(ausgabe: Ausgabe) {
-    console.log('Hinzufügen:')
-    console.log(ausgabe);
-    // Hinzufügen und nach Datum sortieren
-    this.ausgaben.push(this.neueAusgabe);
-    this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+  getAusgaben(): void {
+    this.ausgabenService.getAusgaben().subscribe(ausgaben => {
+      this.ausgaben = ausgaben;
+      this.ausgaben.forEach(ausgabe => ausgabe.datum = new Date(ausgabe.datum!));
+      // Nach Datum ordnen
+      this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+    });
+  }
+
+  add(ausgabe: Ausgabe): void {
+    if(!ausgabe) return;
+    this.ausgabenService.addAusgabe(ausgabe).subscribe(ausgabe => {
+      // Datum muss neu erzeugt werden, sonst Typ-Fehler wegen TypeScript
+      let datum = ausgabe.datum?.toString();
+      ausgabe.datum = new Date(datum!);
+      // Neue Ausgabe hinzufügen
+      this.ausgaben.push(ausgabe);
+      // Nach Datum ordnen
+      this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+    });
     // Hinzufügen-Form resetten
     this.neueAusgabe = new Ausgabe();
   }
 
-  aktualisieren(ausgabe: Ausgabe) {
-    console.warn('Aktualisiere:')
-    console.log(ausgabe);
-    // backend-Aufruf zum Aktualisieren
-
+  update(ausgabe: Ausgabe): void {
+    if(!ausgabe) return;
+    this.ausgabenService.updateAusgabe(ausgabe).subscribe();
   }
 
-  loeschen(ausgabe: Ausgabe) {
-    console.warn('Lösche:')
-    console.log(ausgabe);
-    // backend-Aufruf zum Löschen
-
-
-    // frontend-seitiges löschen
-    this.ausgaben = this.ausgaben.filter( einzelneAusgabe => einzelneAusgabe.id !== ausgabe.id );
+  delete(ausgabe: Ausgabe): void {
+    if(!ausgabe.id) return;
+    this.ausgabenService.deleteAusgabe(ausgabe.id!).subscribe();
+    this.ausgaben = this.ausgaben.filter(a => a.id !== ausgabe.id);
   }
 
-  getErrorMessage(formField: any){
-    if(formField.hasError("required")) return "Pflichtfeld";
-
-    if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
+  getErrorMessage(formField: any): string{
+    if(formField.hasError("required")) {
+      return "Pflichtfeld";
+    } else if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
       return "Der Wert darf nicht negativ sein";
+    } else {
+      return "";
     }
-
-    else return "";
   }
-
 }

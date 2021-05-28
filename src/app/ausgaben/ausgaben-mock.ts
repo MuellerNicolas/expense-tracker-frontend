@@ -1,4 +1,4 @@
-import { Ausgabe } from '../ausgabe.model';
+import { Ausgabe } from './ausgabe.model';
 
 export const AUSGABEN: Ausgabe[] = [
     {
