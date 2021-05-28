@@ -13,6 +13,7 @@ import { UebersichtComponent } from './uebersicht/uebersicht.component';
 import { BudgetsComponent } from './budgets/budgets.component';
 import { ErfolgeComponent } from './erfolge/erfolge.component';
 import { SharedModule } from './shared/shared.module';
+import { AusgabenService } from './ausgaben.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -93,7 +94,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     // HTTP-Mock:
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
+  providers: [ AusgabenService, { provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
