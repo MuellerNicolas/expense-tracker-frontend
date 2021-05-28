@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Budget } from '../budget.model';
-import { BUDGETS } from './budget-mock';
-
+import { Budget } from './budget.model';
+import { BudgetsService } from './budgets.service';
 
 @Component({
   selector: 'budgets',
@@ -9,20 +8,25 @@ import { BUDGETS } from './budget-mock';
   styleUrls: ['./budgets.component.scss']
 })
 export class BudgetsComponent implements OnInit {
-  budgets: Budget[] = BUDGETS;
+  budgets: Budget[] = [];
 
-  constructor() {}
+  constructor(private budgetsService: BudgetsService) {}
 
   ngOnInit(): void {
-    // alphabetisch sortieren
-    this.budgets.sort((a: Budget, b: Budget) => a.kategorie!.localeCompare(b.kategorie!));
+    this.getBudgets();
   }
 
-  aktualisieren(budget: Budget) {
-    console.warn('Aktualisiere:')
-    console.log(budget);
-    // backend-Aufruf zum Aktualisieren
+  getBudgets(): void {
+    this.budgetsService.getBudgets().subscribe(budgets => {
+      this.budgets = budgets;
+      // Nach Kategorie alphabetisch ordnen
+      this.budgets.sort((a: Budget, b: Budget) => a.kategorie!.localeCompare(b.kategorie!))
+    });
+  }
 
+  update(budget: Budget): void {
+    if(!budget) return;
+    this.budgetsService.updateBudget(budget).subscribe();
   }
 
   getErrorMessage(formField: any){
@@ -30,9 +34,7 @@ export class BudgetsComponent implements OnInit {
 
     if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
       return "Der Wert darf nicht negativ sein";
-    }
-
-    else return "";
+    } else return "";
   }
 
 }

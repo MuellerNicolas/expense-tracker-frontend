@@ -8,7 +8,7 @@
         {{budget.kategorie}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form #budgetForm="ngForm" (ngSubmit)="aktualisieren(budget)">
+    <form #budgetForm="ngForm" (ngSubmit)="update(budget)">
       <mat-form-field appearance="outline">
         <mat-label>Betrag</mat-label>
         <input matInput type="number" required min="0" [(ngModel)]="budget.betrag" name="betrag" #betrag="ngModel">
