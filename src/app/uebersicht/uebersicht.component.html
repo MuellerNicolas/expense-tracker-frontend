@@ -1,1 +1,52 @@
-<p>uebersicht works!</p>
+<div fxLayout="column" style="height: 100%">
+    <mat-card fxFlex="1 1 50%">
+        <h1>Ausgaben je Kategorie im aktuellen Monat in Euro</h1>
+        <div style="position: absolute; left: 0; right: 0; top:5rem; bottom: 2rem;">
+            <ngx-charts-pie-chart
+            [results]="pieChartData"
+            [gradient]="pieChartGradient"
+            [legend]="pieChartShowLegend"
+            [legendTitle]="pieChartLegendTitle"
+            [legendPosition]="pieChartLegendPosition"
+            [labels]="pieChartShowLabels"
+            >
+            </ngx-charts-pie-chart>
+        </div>
+    </mat-card>
+    <mat-card fxFlex="1 1 50%">
+        <h1>Ausgaben je Kategorie im aktuellen Monat in Euro</h1>
+        <div style="position: absolute; left: 0; right: 0; top:5rem; bottom: 2rem;">
+            <ngx-charts-line-chart
+            [legend]="lineChartlegend"
+            [legendTitle] = "lineChartLegendTitle"
+            [showXAxisLabel]="lineChartshowXAxisLabel"
+            [showYAxisLabel]="lineChartshowYAxisLabel"
+            [xAxis]="lineChartXAxis"
+            [yAxis]="lineChartYAxis"
+            [xAxisLabel]="lineChartXAxisLabel"
+            [yAxisLabel]="lineChartYAxisLabel"
+            [timeline]="lineChartTimeline"
+            [results]="lineChartData"
+            >
+            </ngx-charts-line-chart>
+        </div>
+    </mat-card>
+    <mat-card fxFlex="1 1 auto">
+        <h1>Ausgaben je Kategorie im aktuellen Monat in Euro</h1>
+        <div style="position: absolute; left: 0; right: 0; top:5rem; bottom: 2rem;">
+            <ngx-charts-line-chart
+            [legend]="lineChartlegend"
+            [legendTitle] = "lineChartLegendTitle"
+            [showXAxisLabel]="lineChartshowXAxisLabel"
+            [showYAxisLabel]="lineChartshowYAxisLabel"
+            [xAxis]="lineChartXAxis"
+            [yAxis]="lineChartYAxis"
+            [xAxisLabel]="lineChartXAxisLabel"
+            [yAxisLabel]="lineChartYAxisLabel"
+            [timeline]="lineChartTimeline"
+            [results]="lineChartData"
+            >
+            </ngx-charts-line-chart>
+        </div>
+    </mat-card>
+</div> 
