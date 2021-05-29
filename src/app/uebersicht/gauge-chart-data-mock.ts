@@ -33,6 +33,6 @@ export const gaugeChartDataMock = [
   },
   {
     "name": "Versicherung",
-    "value": 65,
+    "value": 110,
   },
 ]

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { pieChartDataMock } from './pie-chart-data-mock';
-import { lineChartDataMock } from './line-chart-data-mock';
-import { gaugeChartDataMock } from './gauge-chart-data-mock';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { UebersichtService } from './uebersicht.service';
 
 @Component({
   selector: 'uebersicht',
@@ -38,7 +36,7 @@ export class UebersichtComponent implements OnInit {
   
   // Piechart Konfiguration
   pieChartView: any = [700, 600];
-  pieChartData: any [] = pieChartDataMock;
+  pieChartData: any [] = [];
   pieChartGradient: boolean = true;
   pieChartShowLegend: boolean = true;
   pieChartLegendPosition: any = 'right';
@@ -47,7 +45,7 @@ export class UebersichtComponent implements OnInit {
   
   // Linechart Konfiguration
   lineChartView: any = [700, 600];
-  lineChartData: any[] = lineChartDataMock;
+  lineChartData: any[] = [];
   lineChartlegend: boolean = true;
   lineChartLegendPosition: any = 'right';
   showLabels: boolean = true;
@@ -62,11 +60,11 @@ export class UebersichtComponent implements OnInit {
   
   // Gaugechart Konfiguration
   gaugeChartView: any = [700, 600];
-  gaugeChartData: any[] = gaugeChartDataMock;
+  gaugeChartData: any[] = [];
   gaugeChartLegend: boolean = true;
   gaugeChartLegendPosition: any = 'right';
 
-  constructor(private bpObserver: BreakpointObserver) {
+  constructor(private bpObserver: BreakpointObserver, private uebersichtService: UebersichtService) {
     // Responsive Design der Charts
     this.bpObserver.observe([
       Breakpoints.XSmall,
@@ -110,7 +108,21 @@ export class UebersichtComponent implements OnInit {
     });
   }
 
+  getDaten(): void {
+    this.uebersichtService.getAusgabeJeKategorieAktuellerMonat().subscribe(daten => {
+      this.pieChartData = daten;
+    });
+    this.uebersichtService.getAusgabeJeKategorieHalbesJahr().subscribe(daten => {
+      this.lineChartData = daten;
+    });
+    this.uebersichtService.getBudgetauslastungJeKategorieAktuellerMonat().subscribe(daten => {
+      this.gaugeChartData = daten;
+    });
+  }
+
   ngOnInit(): void {
+    // Daten der Diagramme abrufen
+    this.getDaten();
   }
 
 }

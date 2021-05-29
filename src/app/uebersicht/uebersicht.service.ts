@@ -23,17 +23,24 @@ export class UebersichtService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAusgabeJeKategorieAktuellerMonat() {
-    
+  getAusgabeJeKategorieAktuellerMonat(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.backendAPI}/AusgabeJeKategorieAktuellerMonat`)
+    .pipe(
+      catchError(this.handleError<any[]>('getAusgabeJeKategorieAktuellerMonat', []))
+    );
   }
 
-  getAusgabeJeKategorieHalbesJahr() {
-
+  getAusgabeJeKategorieHalbesJahr(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.backendAPI}/AusgabeJeKategorieHalbesJahr`)
+    .pipe(
+      catchError(this.handleError<any[]>('getAusgabeJeKategorieHalbesJahr', []))
+    );
   }
 
-  getBudgetauslastungJeKategorieAktuellerMonat() {
-
+  getBudgetauslastungJeKategorieAktuellerMonat(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.backendAPI}/BudgetauslastungJeKategorieAktuellerMonat`)
+    .pipe(
+      catchError(this.handleError<any[]>('getBudgetauslastungJeKategorieAktuellerMonat', []))
+    );
   }
-
-
 }
