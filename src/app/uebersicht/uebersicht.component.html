@@ -1,1 +1,48 @@
-<p>uebersicht works!</p>
+<mat-card fxLayout="column">
+    <h1>Ausgaben je Kategorie im aktuellen Monat in Euro</h1>
+    <div class="container">
+        <ngx-charts-pie-chart
+        [view]="pieChartView"
+        [results]="pieChartData"
+        [gradient]="pieChartGradient"
+        [legend]="pieChartShowLegend"
+        [legendTitle]="pieChartLegendTitle"
+        [legendPosition]="pieChartLegendPosition"
+        [labels]="pieChartShowLabels"
+        >
+        </ngx-charts-pie-chart>
+    </div>
+</mat-card>
+<mat-card fxLayout="column">
+    <h1>Ausgabenverlauf je Kategorie der letzten 6 Monate </h1>
+    <div class="container">
+        <ngx-charts-line-chart
+        [view]="lineChartView"
+        [legend]="lineChartlegend"
+        [legendTitle] = "legendTitle"
+        [showXAxisLabel]="lineChartshowXAxisLabel"
+        [showYAxisLabel]="lineChartshowYAxisLabel"
+        [xAxis]="lineChartXAxis"
+        [yAxis]="lineChartYAxis"
+        [xAxisLabel]="lineChartXAxisLabel"
+        [legendPosition]="lineChartLegendPosition"
+        [yAxisLabel]="lineChartYAxisLabel"
+        [timeline]="lineChartTimeline"
+        [results]="lineChartData"
+        >
+        </ngx-charts-line-chart>
+    </div>
+</mat-card>
+<mat-card fxLayout="column">
+    <h1>Budgetauslastung je Kategorie im aktuellen Monat</h1>
+    <div class="container">
+        <ngx-charts-gauge
+        [view]="gaugeChartView"
+        [legendTitle] = "legendTitle"
+        [results]="gaugeChartData"
+        [legend]="gaugeChartLegend"
+        [legendPosition]="gaugeChartLegendPosition"
+        >
+        </ngx-charts-gauge>
+    </div>
+</mat-card>
