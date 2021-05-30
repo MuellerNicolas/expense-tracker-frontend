@@ -1,8 +1,32 @@
 @import '../../styles.scss';
 
-.mat-expansion-panel-header-title,
-.mat-expansion-panel-header-description {
-    flex-basis: 0;
+
+@media (max-width: 767px) {
+    .mat-expansion-panel-header {
+        height: 100%;
+    }
+    .mat-expansion-panel-header-title,
+    .mat-expansion-panel-header-description {
+        display: flex;
+        align-content: center;
+        flex-basis: 0;
+        -moz-hyphens: auto;
+        -o-hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto; 
+    }
+    .mat-expansion-panel:last-of-type {
+        margin-bottom: 5em !important;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .mat-expansion-panel-header-title,
+    .mat-expansion-panel-header-description {
+        flex-basis: 0;
+    }
 }
 
 .mat-content:only-child {
