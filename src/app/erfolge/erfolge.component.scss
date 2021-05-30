@@ -2,6 +2,7 @@ mat-grid-tile {
     max-width: 30em;
   }
 
+
  .monatbox{
   display: flex;
   justify-content: center;
@@ -14,14 +15,17 @@ mat-grid-tile {
   height: 200px;
   border-radius: 7px;
   line-height: 120%;
+  box-shadow: 10px 10px 10px grey;
  }
 
  .table{
-   height: 10em;
+   height: 6em;
  }
 
 
-
+.card{
+  box-shadow: 5px 5px 5px rgb(238, 236, 236);
+}
  .mat-card-header{
    justify-content: center;
  }
@@ -36,11 +40,14 @@ mat-grid-tile {
   div.circle{
     width: 150px;
     height: 150px;
-    
     border-radius: 100px;
     justify-content: center;
     align-items: center;
+    display: inline-block;
+    text-align: center;
+    vertical-align: baseline;
   }
+
 
   #categorycar{
     background-color: #ffbe76;
@@ -58,9 +65,30 @@ mat-grid-tile {
     background-color: #6D214F;
   }
 
+  #categorytravel{
+    background-color: #006266;
+  }
+
+  #categoryclothes{
+    background-color: #003300;
+  }
+
+  #categorystudy{
+    background-color: #3d3d3d;
+  }
+
+  #categoryinsurance{
+    background-color: #2f3640;
+  }
+
+#categorysth{
+background-color: #1b0000;
+}
   .example-section {
     display: flex;
     align-content: center;
     align-items: center;
     height: 40px;
   }
+
+

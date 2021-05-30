@@ -10,15 +10,16 @@
 
 
 <mat-grid-list class="table" cols={{breakpoint}} rowHeight="2:1">
+
+  <!-- Badge Mobilität -->
   <mat-grid-tile>
     <mat-card class="card">
       <mat-card-content>
         <section class="example-section">
-          <mat-progress-bar>
+          <mat-progress-bar  mode="determinate">
               class="example-margin"
-              [color]="color"
-              [mode]="mode"
               [value]="value"
+              [color]="color"
           </mat-progress-bar>
         </section>
         <!-- Bild -->
@@ -35,14 +36,14 @@
     </mat-card>
   </mat-grid-tile>
 
+  <!-- Badge Food-->
   <mat-grid-tile>
     <mat-card class="card">
       <mat-card-content>
         <section class="example-section">
-          <mat-progress-bar>
+          <mat-progress-bar mode="determinate">
               class="example-margin"
               [color]="color"
-              [mode]="mode"
               [value]="value"
           </mat-progress-bar>
         </section>
@@ -55,19 +56,19 @@
         </div>
       </mat-card-content>
       <mat-card-header>
-        <mat-card-title>Essen + Trinken</mat-card-title>
+        <mat-card-title>Lebensmittel</mat-card-title>
       </mat-card-header>
     </mat-card>
   </mat-grid-tile>
 
+  <!-- Badge Hobby -->
   <mat-grid-tile>
     <mat-card class="card">
       <mat-card-content>
         <section class="example-section">
-          <mat-progress-bar>
+          <mat-progress-bar mode="determinate">
               class="example-margin"
               [color]="color"
-              [mode]="mode"
               [value]="value"
           </mat-progress-bar>
         </section>
@@ -84,6 +85,9 @@
     </mat-card>
   </mat-grid-tile>
 
+  <br/>
+
+  <!-- Badge Infrastruktur -->
   <mat-grid-tile>
     <mat-card class="card">
       <mat-card-content>
@@ -91,13 +95,12 @@
           <mat-progress-bar>
               class="example-margin"
               [color]="color"
-              [mode]="mode"
               [value]="value"
           </mat-progress-bar>
         </section>
         <!-- Bild -->
         <div class="circle" id="categoryinfrastructure">
-          <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+          <svg style="width:9em;height:9em" viewBox="0 0 24 24">
           <path fill="white" d="M11.5,1L2,6V8H21V6M16,10V17H19V10M2,22H21V19H2M10,10V17H13V10M4,10V17H7V10H4Z" />
         </svg>
         </div>
@@ -107,5 +110,129 @@
       </mat-card-header>
     </mat-card>
   </mat-grid-tile>
+
+  <!-- Badge Reisen  -->
+  <mat-grid-tile>
+    <mat-card class="card">
+      <mat-card-content>
+        <section class="example-section">
+          <mat-progress-bar  mode="determinate">
+              class="example-margin"
+              [value]="value"
+              [color]="color"
+          </mat-progress-bar>
+        </section>
+        <!-- Bild -->
+        <div class="circle" id="categorytravel">
+          <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+            <path fill="white" d="M2.5,19H21.5V21H2.5V19M22.07,9.64C21.86,8.84 21.03,8.36 20.23,8.58L14.92,10L8,3.57L6.09,4.08L10.23,11.25L5.26,12.58L3.29,11.04L1.84,11.43L3.66,14.59L4.43,15.92L6.03,15.5L11.34,14.07L15.69,12.91L21,11.5C21.81,11.26 22.28,10.44 22.07,9.64Z" />
+        </svg>
+        </div>
+      </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Reisen</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+
+
+
+  <!-- Badge Bekleidung  -->
+  <mat-grid-tile>
+    <mat-card class="card">
+      <mat-card-content>
+        <section class="example-section">
+          <mat-progress-bar  mode="determinate">
+              class="example-margin"
+              [value]="value"
+              [color]="color"
+          </mat-progress-bar>
+        </section>
+        <!-- Bild -->
+        <div class="circle" id="categoryclothes">
+          <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+            <path fill="white" d="M16,21H8A1,1 0 0,1 7,20V12.07L5.7,13.07C5.31,13.46 4.68,13.46 4.29,13.07L1.46,10.29C1.07,9.9 1.07,9.27 1.46,8.88L7.34,3H9C9,4.1 10.34,5 12,5C13.66,5 15,4.1 15,3H16.66L22.54,8.88C22.93,9.27 22.93,9.9 22.54,10.29L19.71,13.12C19.32,13.5 18.69,13.5 18.3,13.12L17,12.12V20A1,1 0 0,1 16,21" />
+        </svg>
+        </div>
+      </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Bekleidung</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+
+  <br/>
+
+   <!-- Badge Bildung  -->
+   <mat-grid-tile>
+    <mat-card class="card">
+      <mat-card-content>
+        <section class="example-section">
+          <mat-progress-bar  mode="determinate">
+              class="example-margin"
+              [value]="value"
+              [color]="color"
+          </mat-progress-bar>
+        </section>
+        <!-- Bild -->
+        <div class="circle" id="categorystudy">
+          <svg style="width:10em;height:10em" viewBox="0 0 24 24">
+            <path fill="white" d="M9 3V18H12V3H9M12 5L16 18L19 17L15 4L12 5M5 5V18H8V5H5M3 19V21H21V19H3Z" />
+        </svg>
+        </div>
+      </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Bildung</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+
+   <!-- Badge Versicherung  -->
+   <mat-grid-tile>
+    <mat-card class="card">
+      <mat-card-content>
+        <section class="example-section">
+          <mat-progress-bar  mode="determinate">
+              class="example-margin"
+              [value]="value"
+              [color]="color"
+          </mat-progress-bar>
+        </section>
+        <!-- Bild -->
+        <div class="circle" id="categoryinsurance">
+          <svg style="width:9em;height:9em" viewBox="0 0 24 24" >
+            <path fill="white" d="M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" />
+        </svg>
+        </div>
+      </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Versicherung</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+   </mat-grid-tile>
+
+     <!--Badge Sonstiges -->
+     <mat-grid-tile>
+      <mat-card class="card">
+        <mat-card-content>
+          <section class="example-section">
+            <mat-progress-bar mode="determinate">
+                class="example-margin"
+                [value]="value"
+                [color]="color"
+            </mat-progress-bar>
+          </section>
+          <!-- Bild -->
+          <div class="circle" id="categorysth">
+            <svg style="width:9em;height:9em" viewBox="0 0 24 24">
+              <path fill="white" d="M5,6H23V18H5V6M14,9A3,3 0 0,1 17,12A3,3 0 0,1 14,15A3,3 0 0,1 11,12A3,3 0 0,1 14,9M9,8A2,2 0 0,1 7,10V14A2,2 0 0,1 9,16H19A2,2 0 0,1 21,14V10A2,2 0 0,1 19,8H9M1,10H3V20H19V22H1V10Z" />
+          </svg>
+          </div>
+        </mat-card-content>
+        <mat-card-header>
+          <mat-card-title>Sonstiges</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
 
 </mat-grid-list>
