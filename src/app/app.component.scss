@@ -1,8 +1,8 @@
-mat-toolbar {
+.mat-toolbar {
     height: 6vh;
 }
 
-mat-sidenav-content {
+.mat-sidenav-content {
     font-size: 100%;
     padding-left: 2.5%;
     padding-right: 2.5%;
@@ -26,12 +26,10 @@ button {
     flex: 1 1 auto;
 }
 
-::-webkit-scrollbar{
-    display: block;
-    width: 0px;
+.mat-sidenav-container {
+    position: fixed;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
 }
-
-header, section, footer{
-    overflow: hidden;
-}
-

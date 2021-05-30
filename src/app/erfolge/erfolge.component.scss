@@ -1,10 +1,9 @@
-mat-grid-tile {
+.mat-grid-tile {
    // width: ;
    //height: 267px
-  }
+}
 
-
- .monatbox{
+.monatbox{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,86 +17,79 @@ mat-grid-tile {
   border-radius: 20px;
   line-height: 120%;
   box-shadow: 10px 10px 10px grey;
- }
+}
 
- .table{
+.table{
   height: 20%;
- }
+}
 
-
-.card{
+.card {
   box-shadow: 5px 5px 5px rgb(238, 236, 236);
- 
-  
 }
 
- .mat-card-header{
-   justify-content: center;
- }
-  
-  .container { 
-    display: grid; 
-    //grid-template-rows:200px 1fr 100px; 
-    //grid-template-columns:25% 25% 25%;
-    justify-content: center;
-  }
-
-  
-
-  div.circle{
-   width: 100%;
-   height: 150%;
-   border-radius: 100%;
-    justify-content: center;
-    align-items: center;
-    display: inline-block;
-    text-align: center;
-    vertical-align: baseline;
-  }
-
-
-  #categorycar{
-    background-color: #ffbe76;
-  }
-
-  #categoryfood{
-    background-color: #cc8e35;
-  }
-
-  #categoryhobby{
-    background-color: #130f40;
-  }
-
-  #categoryinfrastructure{
-    background-color: #6D214F;
-  }
-
-  #categorytravel{
-    background-color: #006266;
-  }
-
-  #categoryclothes{
-    background-color: #003300;
-  }
-
-  #categorystudy{
-    background-color: #3d3d3d;
-  }
-
-  #categoryinsurance{
-    background-color: #2f3640;
-  }
-
-#categorysth{
-background-color: #1b0000;
+.mat-card-header {
+  justify-content: center;
 }
+
+.container { 
+  display: grid; 
+  //grid-template-rows:200px 1fr 100px; 
+  //grid-template-columns:25% 25% 25%;
+  justify-content: center;
+}
+
+
+
+div.circle {
+  width: 100%;
+  height: 150%;
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  text-align: center;
+  vertical-align: baseline;
+}
+
+#categorycar {
+  background-color: #ffbe76;
+}
+
+#categoryfood {
+  background-color: #cc8e35;
+}
+
+#categoryhobby {
+  background-color: #130f40;
+}
+
+#categoryinfrastructure {
+  background-color: #6D214F;
+}
+
+#categorytravel {
+  background-color: #006266;
+}
+
+#categoryclothes {
+  background-color: #003300;
+}
+
+#categorystudy {
+  background-color: #3d3d3d;
+}
+
+#categoryinsurance {
+  background-color: #2f3640;
+}
+
+#categorysth {
+  background-color: #1b0000;
+}
+
 .example-section {
   display: flex;
   align-content: center;
   align-items: center;
   height: 3em;
-}
-
-::-webkit-scrollbar{
-  display: block;
 }
