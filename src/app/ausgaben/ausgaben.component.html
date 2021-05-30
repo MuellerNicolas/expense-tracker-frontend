@@ -8,7 +8,7 @@
         Neue Ausgabe hinzufügen
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <form #ausgabeForm="ngForm" (ngSubmit)="hinzufuegen(neueAusgabe)">
+    <form #ausgabeForm="ngForm" (ngSubmit)="add(neueAusgabe)">
       <mat-form-field appearance="outline">
         <mat-label>Datum</mat-label>
         <input matInput [matDatepicker]="picker" required [(ngModel)]="neueAusgabe.datum" name="datum" ngDefaultControl #datum="ngModel">
@@ -59,19 +59,19 @@
         {{ausgabe.name}}
       </mat-panel-description>
       <mat-panel-description class="mat-panel-description">
-        {{ausgabe.betrag | punktZuKomma}} {{ausgabe.waehrung}}
+        {{ausgabe.betrag | punktZuKomma}} €
       </mat-panel-description>
       <mat-panel-description class="mat-panel-description">
         {{ausgabe.kategorie}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form #ausgabeForm="ngForm" (ngSubmit)="aktualisieren(ausgabe)">
+    <form #ausgabeForm="ngForm" (ngSubmit)="update(ausgabe)">
       <mat-form-field appearance="outline">
         <mat-label>Datum</mat-label>
         <input matInput [matDatepicker]="picker" required [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl #datum="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl></mat-datepicker>
-        <mat-error *ngIf="datum.errors?.required">{{getErrorMessage(datum)}}</mat-error>
+        <mat-error *ngIf="datum.errors">{{getErrorMessage(datum)}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
@@ -104,7 +104,7 @@
       <br/>
       <button mat-raised-button type="submit" [disabled]="!ausgabeForm.form.valid" color="primary">Aktualisieren</button>
       <span class="einzug"></span>
-      <button mat-raised-button color="warn" (click)="loeschen(ausgabe)">Löschen</button>
+      <button mat-raised-button color="warn" (click)="delete(ausgabe)">Löschen</button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>
