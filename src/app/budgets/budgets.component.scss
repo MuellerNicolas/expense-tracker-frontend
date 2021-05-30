@@ -1,3 +1,9 @@
 .mat-panel-description {
     color: black
 }
+
+@media (max-width: 767px) {
+    .mat-expansion-panel:last-of-type {
+        margin-bottom: 5em !important;
+    }
+}
