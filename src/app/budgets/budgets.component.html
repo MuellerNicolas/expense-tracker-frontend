@@ -5,7 +5,7 @@
   <mat-expansion-panel *ngFor="let budget of budgets">
     <mat-expansion-panel-header>
       <mat-panel-description class="mat-panel-description">
-        {{budget.kategorie}}
+        {{budget.kategorieName}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <form #budgetForm="ngForm" (ngSubmit)="update(budget)">
