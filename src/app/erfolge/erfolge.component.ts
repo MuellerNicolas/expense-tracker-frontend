@@ -9,7 +9,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class ErfolgeComponent implements OnInit {
   breakpoint: number;
 
-  
+  // TODO Später löschen
   value = 50;
 
   bpCols = {
@@ -55,8 +55,5 @@ export class ErfolgeComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  onResize(event: any) {
   }
 }
