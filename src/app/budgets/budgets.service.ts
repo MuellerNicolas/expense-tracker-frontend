@@ -35,7 +35,7 @@ export class BudgetsService {
   }
 
   updateBudget(budget: Budget): Observable<Budget> {
-    return this.httpClient.put<Budget>(`${this.backendAPI}/budgets/${budget.id}`, budget, this.httpOptions)
+    return this.httpClient.put<Budget>(`${this.backendAPI}/budgets/${budget.kategorieId}`, budget, this.httpOptions)
     .pipe(
       catchError(this.handleError<any>('updateBudget'))
     );

@@ -34,7 +34,7 @@ export class AusgabenComponent implements OnInit {
 
   getKategorien(): void {
     this.budgetsService.getBudgets().subscribe(budgets => {
-      budgets.forEach((budget: Budget) => this.kategorien.push(budget.kategorie!));
+      budgets.forEach((budget: Budget) => this.kategorien.push(budget.kategorieName!));
       // Kategorie alphabetisch ordnen
       this.kategorien.sort();
     });
@@ -61,9 +61,9 @@ export class AusgabenComponent implements OnInit {
   }
 
   delete(ausgabe: Ausgabe): void {
-    if(!ausgabe.id) return;
-    this.ausgabenService.deleteAusgabe(ausgabe.id!).subscribe();
-    this.ausgaben = this.ausgaben.filter(a => a.id !== ausgabe.id);
+    if(!ausgabe.expenseId) return;
+    this.ausgabenService.deleteAusgabe(ausgabe.expenseId!).subscribe();
+    this.ausgaben = this.ausgaben.filter(a => a.expenseId !== ausgabe.expenseId);
   }
 
   getErrorMessage(formField: any): string{

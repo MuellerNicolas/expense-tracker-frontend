@@ -42,7 +42,7 @@ export class AusgabenService {
   }
   
   updateAusgabe(ausgabe: Ausgabe): Observable<Ausgabe> {
-    return this.httpClient.put<Ausgabe>(`${this.backendAPI}/ausgaben/${ausgabe.id}`, ausgabe, this.httpOptions)
+    return this.httpClient.put<Ausgabe>(`${this.backendAPI}/ausgaben/${ausgabe.expenseId}`, ausgabe, this.httpOptions)
     .pipe(
       catchError(this.handleError<any>('updateAusgabe'))
     );

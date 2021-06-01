@@ -2,57 +2,57 @@ import { Budget } from './budget.model';
 
 export const BUDGETS: Budget[] = [
     {
-      "id": 1,
-      "kategorie": "Freizeit",
+      "kategorieId": 1,
+      "kategorieName": "Freizeit",
       "betrag": 10,
     
     },
     {
-      "id": 2,
-      "kategorie": "Essen und Trinken",
+      "kategorieId": 2,
+      "kategorieName": "Essen und Trinken",
       "betrag": 1.5,
       
     },
     {
-      "id": 3,
-      "kategorie": "Reisen",
+      "kategorieId": 3,
+      "kategorieName": "Reisen",
       "betrag": 3.5,
       
     },
 
     {
-      "id": 4,
-      "kategorie": "Infrastruktur",
+      "kategorieId": 4,
+      "kategorieName": "Infrastruktur",
       "betrag": 4,
       
     },
     {
-      "id": 5,
-      "kategorie": "Mobilität",
+      "kategorieId": 5,
+      "kategorieName": "Mobilität",
       "betrag": 5,
       
     },
     {
-      "id": 6,
-      "kategorie": "Bekleidung",
+      "kategorieId": 6,
+      "kategorieName": "BeklekategorieIdung",
       "betrag": 5,
       
     },
     {
-      "id": 5,
-      "kategorie": "Ausbildung und Studium",
+      "kategorieId": 5,
+      "kategorieName": "Ausbildung und Studium",
       "betrag": 5,
       
     },
     {
-      "id": 5,
-      "kategorie": "Versicherung",
+      "kategorieId": 5,
+      "kategorieName": "Versicherung",
       "betrag": 5,
       
     },
     {
-      "id": 5,
-      "kategorie": "Sonstige Ausgaben",
+      "kategorieId": 5,
+      "kategorieName": "Sonstige Ausgaben",
       "betrag": 5,
       
     },
