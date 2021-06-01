@@ -13,16 +13,13 @@ describe('UebersichtComponent', () => {
   beforeEach(async () => {
     const uebersichtServiceStub = {
       getAusgabeJeKategorieAktuellerMonat() {
-        const MOCK = pieChartDataMock;
-        return of( MOCK );
+        return of(pieChartDataMock);
       },
       getAusgabeJeKategorieHalbesJahr() {
-        const MOCK = lineChartDataMock;
-        return of( MOCK );
+        return of(lineChartDataMock);
       },
       getBudgetauslastungJeKategorieAktuellerMonat() {
-        const MOCK = gaugeChartDataMock;
-        return of( MOCK );
+        return of(gaugeChartDataMock);
       }
     };
 

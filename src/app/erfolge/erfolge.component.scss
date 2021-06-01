@@ -1,0 +1,98 @@
+#bugetStreak {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: -5%;
+  background-color: #e0e0e0;
+  width: 80%;
+  height: 20%;
+  border-radius: 20px;
+  line-height: 120%;
+  box-shadow: 10px 10px 10px grey;
+}
+
+.mat-progress-bar {
+  margin-bottom: 1em;
+}
+
+.mat-card-header {
+  margin-top: 1em;
+}
+
+.card {
+  box-shadow: 5px 5px 5px rgb(238, 236, 236);
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-card-header {
+  justify-content: center;
+}
+
+div.circle {
+  width: 10vw;
+  height: 10vw;
+  position: relative;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+div > svg {
+  padding: 15%;
+}
+
+.kategorie-1 {
+  background-color: #3d3d3d;
+}
+
+.kategorie-2 {
+  background-color: #003300;
+}
+
+.kategorie-3 {
+  background-color: #cc8e35;
+}
+
+.kategorie-4 {
+  background-color: #130f40;
+}
+
+.kategorie-5 {
+  background-color: #6D214F;
+}
+.kategorie-6 {
+  background-color: #ffbe76;
+}
+
+.kategorie-7 {
+  background-color: #006266;
+}
+
+.kategorie-8 {
+  background-color: #1b0000;
+}
+
+.kategorie-9 {
+  background-color: #2f3640;
+}
+
+.bronze {
+  background-color: #b1823e;
+}
+
+.silber {
+  background-color: #c0c0c0;
+}
+
+.gold {
+  background-color: #b9a541;
+}
