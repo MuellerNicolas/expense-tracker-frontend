@@ -34,7 +34,7 @@ export class ErfolgeService {
   }
 
   getBadges(): Observable<Badge[]> {
-    return this.httpClient.get<Badge[]>(`${this.backendAPI}/badges`)
+    return this.httpClient.get<Badge[]>(`${this.backendAPI}/badges/`)
     .pipe(
       catchError(this.handleError<Badge[]>('getBadges', []))
     );

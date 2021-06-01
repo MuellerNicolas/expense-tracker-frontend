@@ -28,7 +28,7 @@ export class BudgetsService {
   constructor(private httpClient: HttpClient) { }
 
   getBudgets(): Observable<Budget[]> {
-    return this.httpClient.get<Budget[]>(`${this.backendAPI}/budgets`)
+    return this.httpClient.get<Budget[]>(`${this.backendAPI}/budgets/`)
     .pipe(
       catchError(this.handleError<Budget[]>('getBudget', []))
     );

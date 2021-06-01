@@ -28,7 +28,7 @@ export class AusgabenService {
   constructor(private httpClient: HttpClient) { }
 
   getAusgaben(): Observable<Ausgabe[]> {
-    return this.httpClient.get<Ausgabe[]>(`${this.backendAPI}/ausgaben`)
+    return this.httpClient.get<Ausgabe[]>(`${this.backendAPI}/ausgaben/`)
     .pipe(
       catchError(this.handleError<Ausgabe[]>('getAusgaben', []))
     );
@@ -48,7 +48,9 @@ export class AusgabenService {
     );
   }
 
-  addAusgabe(ausgabe: Ausgabe): Observable<Ausgabe> {
+  addAusgabe(ausgabe: any): Observable<Ausgabe> {
+    // Backend akzeptiert nur ISO Datum
+    ausgabe.datum = ausgabe.datum!.toISOString()
     return this.httpClient.post<Ausgabe>(`${this.backendAPI}/ausgaben`, ausgabe, this.httpOptions)
     .pipe(
       catchError(this.handleError<any>('addAusgabe'))
