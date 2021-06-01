@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ErfolgeService } from './erfolge.service';
+import { Badge } from './badge.model';
 
 @Component({
   selector: 'erfolge',
@@ -8,19 +10,21 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class ErfolgeComponent implements OnInit {
   breakpoint: number;
+  budgetStreak: number = 0;
+  badges: Badge[] = [];
 
   // TODO Später löschen
   value = 50;
 
   bpCols = {
     XSmall: 1,
-    Small: 1,
+    Small: 2,
     Medium: 3,
     Large: 3,
     XLarge: 4
   }
 
-  constructor(private bpObserver: BreakpointObserver) {
+  constructor(private erfolgeService: ErfolgeService, private bpObserver: BreakpointObserver) {
     this.breakpoint = 3;
     this.bpObserver.observe([
       Breakpoints.XSmall,
@@ -55,5 +59,26 @@ export class ErfolgeComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Budget Streak
+    this.getBudgetStreak();
+    // Badge Informationen
+    this.getBadges();
+  }
+
+  getBudgetStreak(): void {
+    this.erfolgeService.getBudgetStreak().subscribe(budgetStreak => {
+      this.budgetStreak = budgetStreak.monateBudgetStreak;
+    });
+  }
+
+  getBadges(): void {
+    this.erfolgeService.getBadges().subscribe(badges => {
+      // dynamische Felder füllen durch erzeugen von Badge-Objekten
+      this.badges = badges.map((badge: Badge) => {
+        return new Badge(badge.kategorieId, badge.kategorieName, badge.monateEingehaltenTotal)
+      });
+      // Nach Alphabet ordnen
+      this.badges.sort((a: Badge, b: Badge) => a.kategorieName!.localeCompare(b.kategorieName!));
+    });
   }
 }

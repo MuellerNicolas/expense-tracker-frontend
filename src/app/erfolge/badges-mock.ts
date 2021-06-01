@@ -1,6 +1,4 @@
-import { Badge } from './badge.model';
-
-export const BADGES: Badge[] = [
+export const BADGES: any[] = [
   {
     "kategorieId": 1,
     "kategorieName": "Ausbildung und Studium",
@@ -9,7 +7,7 @@ export const BADGES: Badge[] = [
   {
     "kategorieId": 2,
     "kategorieName": "Bekleidung",
-    "monateEingehaltenTotal": 3,
+    "monateEingehaltenTotal": 0,
   },
   {
     "kategorieId": 3,
@@ -19,27 +17,27 @@ export const BADGES: Badge[] = [
   {
     "kategorieId": 4,
     "kategorieName": "Freizeit",
-    "monateEingehaltenTotal": 3,
+    "monateEingehaltenTotal": 7,
   },
   {
     "kategorieId": 5,
     "kategorieName": "Infrastruktur",
-    "monateEingehaltenTotal": 2,
+    "monateEingehaltenTotal": 4,
   },
   {
     "kategorieId": 6,
     "kategorieName": "Mobilität",
-    "monateEingehaltenTotal": 2,
+    "monateEingehaltenTotal": 12,
   },
   {
     "kategorieId": 7,
     "kategorieName": "Reisen",
-    "monateEingehaltenTotal": 1,
+    "monateEingehaltenTotal": 5,
   },
   {
     "kategorieId": 8,
     "kategorieName": "Sonstige Ausgaben",
-    "monateEingehaltenTotal": 3,
+    "monateEingehaltenTotal": 9,
   },
   {
     "kategorieId": 9,

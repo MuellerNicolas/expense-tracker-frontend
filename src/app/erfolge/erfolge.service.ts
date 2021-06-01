@@ -25,18 +25,18 @@ export class ErfolgeService {
   }
 
   constructor(private httpClient: HttpClient) { }
+  
+  getBudgetStreak(): Observable<any> {
+    return this.httpClient.get<any>(`${this.backendAPI}/budgetStreak`)
+    .pipe(
+      catchError(this.handleError<any>('getBudgetStreak', 0))
+    );
+  }
 
   getBadges(): Observable<Badge[]> {
     return this.httpClient.get<Badge[]>(`${this.backendAPI}/badges`)
     .pipe(
       catchError(this.handleError<Badge[]>('getBadges', []))
-    );
-  }
-
-  getBudgetStreak(): Observable<any> {
-    return this.httpClient.get<any>(`${this.backendAPI}/budgetStreak`)
-    .pipe(
-      catchError(this.handleError<any>('getBudgetStreak', 0))
     );
   }
 }
