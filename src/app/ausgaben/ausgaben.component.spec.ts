@@ -16,8 +16,7 @@ describe('AusgabenComponent', () => {
   beforeEach(async () => {
     const ausgabenServiceStub = {
       getAusgaben() {
-        const AUSGABENMOCK = AUSGABEN;
-        return of( AUSGABENMOCK );
+        return of(AUSGABEN);
       }
     };
 

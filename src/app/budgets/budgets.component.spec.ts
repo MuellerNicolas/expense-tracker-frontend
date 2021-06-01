@@ -12,8 +12,7 @@ describe('BudgetsComponent', () => {
   beforeEach(async () => {
     const budgetsServiceStub = {
       getBudgets() {
-        const BUDGETSMOCK = BUDGETS;
-        return of(BUDGETSMOCK);
+        return of(BUDGETS);
       }
     };
 
