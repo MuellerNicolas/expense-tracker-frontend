@@ -6,7 +6,7 @@
   <mat-grid-tile *ngFor="let badge of badges">
     <mat-card class="card flex">
         <!-- Fortschrittsbalken -->
-        <mat-progress-bar  mode="determinate" [value]="badge.fortschritt" [color]="badge.farbeNaechsteStufe">
+        <mat-progress-bar [class]="badge.farbeNaechsteStufe"  mode="determinate" [value]="badge.fortschritt">
         </mat-progress-bar>
         <!-- Bild -->
         <div class="circle" class="{{badge.farbe}}">

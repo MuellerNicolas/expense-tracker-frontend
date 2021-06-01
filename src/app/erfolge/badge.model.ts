@@ -46,9 +46,9 @@ export class Badge {
 
     getFortschrittNaechsteStufe(monateEingehaltenTotal: number) {
         if(monateEingehaltenTotal >= 9) {
-            return 3;
+            return 100;
         } else {
-            return monateEingehaltenTotal % 3;
+            return monateEingehaltenTotal % 3 / 3 * 100;
         }
     }
 }
