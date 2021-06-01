@@ -20,7 +20,7 @@ export class BudgetsComponent implements OnInit {
     this.budgetsService.getBudgets().subscribe(budgets => {
       this.budgets = budgets;
       // Nach Kategorie alphabetisch ordnen
-      this.budgets.sort((a: Budget, b: Budget) => a.kategorie!.localeCompare(b.kategorie!))
+      this.budgets.sort((a: Budget, b: Budget) => a.kategorieName!.localeCompare(b.kategorieName!))
     });
   }
 
