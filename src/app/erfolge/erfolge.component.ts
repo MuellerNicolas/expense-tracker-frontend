@@ -75,7 +75,7 @@ export class ErfolgeComponent implements OnInit {
     this.erfolgeService.getBadges().subscribe(badges => {
       // dynamische Felder füllen durch erzeugen von Badge-Objekten
       this.badges = badges.map((badge: Badge) => {
-        return new Badge(badge.kategorieId, badge.kategorieName, badge.monateEingehaltenTotal)
+        return new Badge(badge.id, badge.kategorieName, badge.monateEingehaltenTotal)
       });
       // Nach Alphabet ordnen
       this.badges.sort((a: Badge, b: Badge) => a.kategorieName!.localeCompare(b.kategorieName!));

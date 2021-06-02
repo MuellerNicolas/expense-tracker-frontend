@@ -1,10 +1,10 @@
 export class Budget {
-    kategorieId?: number;
+    id?: number;
     betrag?: number;
     kategorieName?: string;
     
-    constructor(kategorieId?: number, betrag?: number, kategorieName?: string){
-        this.kategorieId = kategorieId;
+    constructor(id?: number, betrag?: number, kategorieName?: string){
+        this.id = id;
         this.betrag = betrag;
         this.kategorieName = kategorieName;
     }

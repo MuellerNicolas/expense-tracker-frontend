@@ -11,7 +11,7 @@ const svgImages: any = {
 }
 
 export class Badge {
-    kategorieId?: number;
+    id?: number;
     kategorieName?: string;
     monateEingehaltenTotal?: number;
     symbol?: string;
@@ -19,20 +19,20 @@ export class Badge {
     farbeNaechsteStufe?: string;
     fortschritt?: number;
 
-    constructor(kategorieId?: number, kategorieName?: string, monateEingehaltenTotal?: number) {
-        this.kategorieId = kategorieId;
+    constructor(id?: number, kategorieName?: string, monateEingehaltenTotal?: number) {
+        this.id = id;
         this.kategorieName = kategorieName;
         this.monateEingehaltenTotal = monateEingehaltenTotal;
-        this.symbol = svgImages[kategorieId!];
-        this.farbe = this.getFarbe(kategorieId!, monateEingehaltenTotal!);
-        this.farbeNaechsteStufe = this.getFarbe(kategorieId!, monateEingehaltenTotal! + 3);
+        this.symbol = svgImages[id!];
+        this.farbe = this.getFarbe(id!, monateEingehaltenTotal!);
+        this.farbeNaechsteStufe = this.getFarbe(id!, monateEingehaltenTotal! + 3);
         this.fortschritt = this.getFortschrittNaechsteStufe(monateEingehaltenTotal!);
     }
 
-    getFarbe(kategorieId: number, monateEingehaltenTotal: number) {
+    getFarbe(id: number, monateEingehaltenTotal: number) {
         const prefix = "kategorie-";
         if(monateEingehaltenTotal < 3) {
-            return prefix + kategorieId;
+            return prefix + id;
         } else if(monateEingehaltenTotal < 6) {
             return "bronze";
         } else if(monateEingehaltenTotal < 9) {
@@ -40,7 +40,7 @@ export class Badge {
         } else if(monateEingehaltenTotal >= 9) {
             return "gold";
         } else {
-            return prefix + kategorieId;
+            return prefix + id;
         }
     }
 

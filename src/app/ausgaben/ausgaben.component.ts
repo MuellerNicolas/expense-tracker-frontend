@@ -61,9 +61,9 @@ export class AusgabenComponent implements OnInit {
   }
 
   delete(ausgabe: Ausgabe): void {
-    if(!ausgabe.expenseId) return;
-    this.ausgabenService.deleteAusgabe(ausgabe.expenseId!).subscribe();
-    this.ausgaben = this.ausgaben.filter(a => a.expenseId !== ausgabe.expenseId);
+    if(!ausgabe.id) return;
+    this.ausgabenService.deleteAusgabe(ausgabe.id!).subscribe();
+    this.ausgaben = this.ausgaben.filter(a => a.id !== ausgabe.id);
   }
 
   getErrorMessage(formField: any): string{
