@@ -9,5 +9,5 @@ RUN npm run build
 ### STAGE 2: Run ###
 FROM nginx:1.17.1-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
-EXPOSE 80
+EXPOSE 81
 COPY --from=build /usr/src/app/dist/expense-tracker-frontend /usr/share/nginx/html
