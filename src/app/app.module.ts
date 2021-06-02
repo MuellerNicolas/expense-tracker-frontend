@@ -100,9 +100,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     HttpClientModule,
     NgxChartsModule,
     // HTTP-Mock:
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+    //   dataEncapsulation: false,
+    // }),
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
   bootstrap: [AppComponent],
