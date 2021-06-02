@@ -20,6 +20,14 @@ export class InMemoryDataService implements InMemoryDbService {
     const BudgetauslastungJeKategorieAktuellerMonat = gaugeChartDataMock;
     const badges = BADGES;
     const budgetStreak = BUDGETSTREAK;
-    return {ausgaben, budgets, AusgabeJeKategorieAktuellerMonat, AusgabeJeKategorieHalbesJahr, BudgetauslastungJeKategorieAktuellerMonat, badges, budgetStreak};
+    return {
+      ausgaben,
+      budgets,
+      AusgabeJeKategorieAktuellerMonat,
+      AusgabeJeKategorieHalbesJahr,
+      BudgetauslastungJeKategorieAktuellerMonat,
+      badges,
+      budgetStreak,
+    };
   }
 }

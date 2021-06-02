@@ -6,7 +6,6 @@ import { BudgetsService } from '../budgets/budgets.service';
 import { BADGES } from './badges-mock';
 import { BUDGETSTREAK } from './budget-streak-mock';
 
-
 import { ErfolgeComponent } from './erfolge.component';
 
 describe('ErfolgeComponent', () => {
@@ -20,15 +19,14 @@ describe('ErfolgeComponent', () => {
       },
       getBudgetStreak() {
         return of(BUDGETSTREAK);
-      }
+      },
     };
 
     await TestBed.configureTestingModule({
-      imports: [ HttpClientModule, HttpClientTestingModule ],
-      declarations: [ ErfolgeComponent ],
-      providers: [ {provide: BudgetsService, useValue: erfolgeServiceStub}]
-    })
-    .compileComponents();
+      imports: [HttpClientModule, HttpClientTestingModule],
+      declarations: [ErfolgeComponent],
+      providers: [{ provide: BudgetsService, useValue: erfolgeServiceStub }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ErfolgeComponent);
     component = fixture.componentInstance;
