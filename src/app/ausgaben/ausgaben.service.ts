@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ausgabe } from './ausgabe.model';
+import { ServiceHelperService } from '../shared/service-helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,55 +13,42 @@ export class AusgabenService {
 
   backendAPI: string = environment.backendAPI;
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.error(`${operation} failed: ${error.message}`);
-      // Default-Wert zurückgeben
-      return of(result as T);
-    };
-  }
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private serviceHelperService: ServiceHelperService) { }
 
   getAusgaben(): Observable<Ausgabe[]> {
     return this.httpClient.get<Ausgabe[]>(`${this.backendAPI}/ausgaben/`)
     .pipe(
-      catchError(this.handleError<Ausgabe[]>('getAusgaben', []))
+      catchError(this.serviceHelperService.handleError<Ausgabe[]>('getAusgaben', []))
     );
   }
 
   getAusgabe(id: number): Observable<Ausgabe> {
     return this.httpClient.get<Ausgabe>(`${this.backendAPI}/ausgaben/${id}`)
     .pipe(
-      catchError(this.handleError<Ausgabe>('getAusgabe id=${id}'))
+      catchError(this.serviceHelperService.handleError<Ausgabe>('getAusgabe id=${id}'))
     );
   }
   
   updateAusgabe(ausgabe: Ausgabe): Observable<Ausgabe> {
-    return this.httpClient.put<Ausgabe>(`${this.backendAPI}/ausgaben/${ausgabe.id}`, ausgabe, this.httpOptions)
+    return this.httpClient.put<Ausgabe>(`${this.backendAPI}/ausgaben/${ausgabe.id}`, ausgabe, this.serviceHelperService.getHttpOptionPutAndPost())
     .pipe(
-      catchError(this.handleError<any>('updateAusgabe'))
+      catchError(this.serviceHelperService.handleError<any>('updateAusgabe'))
     );
   }
 
   addAusgabe(ausgabe: any): Observable<Ausgabe> {
     // Backend akzeptiert nur ISO Datum
     ausgabe.datum = ausgabe.datum!.toISOString()
-    return this.httpClient.post<Ausgabe>(`${this.backendAPI}/ausgaben`, ausgabe, this.httpOptions)
+    return this.httpClient.post<Ausgabe>(`${this.backendAPI}/ausgaben`, ausgabe, this.serviceHelperService.getHttpOptionPutAndPost())
     .pipe(
-      catchError(this.handleError<any>('addAusgabe'))
+      catchError(this.serviceHelperService.handleError<any>('addAusgabe'))
     );
   }
 
   deleteAusgabe(id: number): Observable<Ausgabe> {
-    return this.httpClient.delete<Ausgabe>(`${this.backendAPI}/ausgaben/${id}`, this.httpOptions)
+    return this.httpClient.delete<Ausgabe>(`${this.backendAPI}/ausgaben/${id}`, this.serviceHelperService.getHttpOptionPutAndPost())
     .pipe(
-      catchError(this.handleError<any>('deleteAusgabe'))
+      catchError(this.serviceHelperService.handleError<any>('deleteAusgabe'))
     );
   }
 }
