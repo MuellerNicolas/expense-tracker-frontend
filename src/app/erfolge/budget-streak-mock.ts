@@ -1,3 +1,3 @@
 export const BUDGETSTREAK: any = {
-  "monateBudgetStreak": 3
-}
+  monateBudgetStreak: 3,
+};

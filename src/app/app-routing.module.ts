@@ -8,15 +8,15 @@ import { ErfolgeComponent } from './erfolge/erfolge.component';
 
 // order routes from specific to general!
 const routes: Routes = [
-  { path: 'uebersicht', component: UebersichtComponent},
-  { path: 'ausgaben', component: AusgabenComponent},
-  { path: 'budgets', component: BudgetsComponent},
-  { path: 'erfolge', component: ErfolgeComponent},
-  { path: '**', redirectTo: 'uebersicht'},
+  { path: 'uebersicht', component: UebersichtComponent },
+  { path: 'ausgaben', component: AusgabenComponent },
+  { path: 'budgets', component: BudgetsComponent },
+  { path: 'erfolge', component: ErfolgeComponent },
+  { path: '**', redirectTo: 'uebersicht' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

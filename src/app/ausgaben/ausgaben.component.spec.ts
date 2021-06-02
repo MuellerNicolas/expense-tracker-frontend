@@ -17,16 +17,20 @@ describe('AusgabenComponent', () => {
     const ausgabenServiceStub = {
       getAusgaben() {
         return of(AUSGABEN);
-      }
+      },
     };
 
     await TestBed.configureTestingModule({
-      imports: [ FormsModule, SharedModule, HttpClientModule, HttpClientTestingModule ],
-      declarations: [ AusgabenComponent ],
-      providers: [ {provide: AusgabenService, useValue: ausgabenServiceStub}]
-    })
-    .compileComponents();
-  
+      imports: [
+        FormsModule,
+        SharedModule,
+        HttpClientModule,
+        HttpClientTestingModule,
+      ],
+      declarations: [AusgabenComponent],
+      providers: [{ provide: AusgabenService, useValue: ausgabenServiceStub }],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AusgabenComponent);
     component = fixture.componentInstance;
   });

@@ -3,15 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServiceHelperService {
-
-  constructor() { }
+  constructor() {}
 
   getHttpOptionPutAndPost(): any {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' });
+  }
 
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

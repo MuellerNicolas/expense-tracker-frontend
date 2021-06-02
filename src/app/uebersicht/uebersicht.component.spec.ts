@@ -20,15 +20,16 @@ describe('UebersichtComponent', () => {
       },
       getBudgetauslastungJeKategorieAktuellerMonat() {
         return of(gaugeChartDataMock);
-      }
+      },
     };
 
     await TestBed.configureTestingModule({
       imports: [],
-      declarations: [ UebersichtComponent ],
-      providers: [ {provide: UebersichtService, useValue: uebersichtServiceStub}]
-    })
-    .compileComponents();
+      declarations: [UebersichtComponent],
+      providers: [
+        { provide: UebersichtService, useValue: uebersichtServiceStub },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

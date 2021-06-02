@@ -5,7 +5,7 @@ import { BudgetsService } from './budgets.service';
 @Component({
   selector: 'budgets',
   templateUrl: './budgets.component.html',
-  styleUrls: ['./budgets.component.scss']
+  styleUrls: ['./budgets.component.scss'],
 })
 export class BudgetsComponent implements OnInit {
   budgets: Budget[] = [];
@@ -17,24 +17,28 @@ export class BudgetsComponent implements OnInit {
   }
 
   getBudgets(): void {
-    this.budgetsService.getBudgets().subscribe(budgets => {
+    this.budgetsService.getBudgets().subscribe((budgets) => {
       this.budgets = budgets;
       // Nach Kategorie alphabetisch ordnen
-      this.budgets.sort((a: Budget, b: Budget) => a.kategorieName!.localeCompare(b.kategorieName!))
+      this.budgets.sort((a: Budget, b: Budget) =>
+        a.kategorieName!.localeCompare(b.kategorieName!)
+      );
     });
   }
 
   update(budget: Budget): void {
-    if(!budget) return;
+    if (!budget) return;
     this.budgetsService.updateBudget(budget).subscribe();
   }
 
-  getErrorMessage(formField: any){
-    if(formField.hasError("required")) return "Pflichtfeld";
+  getErrorMessage(formField: any) {
+    if (formField.hasError('required')) return 'Pflichtfeld';
 
-    if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
-      return "Der Wert darf nicht negativ sein";
-    } else return "";
+    if (
+      formField.hasError('min') &&
+      formField.control.errors.min.actual < formField.control.errors.min.min
+    ) {
+      return 'Der Wert darf nicht negativ sein';
+    } else return '';
   }
-
 }

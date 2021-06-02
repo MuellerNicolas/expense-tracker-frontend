@@ -7,14 +7,17 @@ import { AusgabenService } from './ausgaben.service';
 @Component({
   selector: 'ausgaben',
   templateUrl: './ausgaben.component.html',
-  styleUrls: ['./ausgaben.component.scss']
+  styleUrls: ['./ausgaben.component.scss'],
 })
 export class AusgabenComponent implements OnInit {
   ausgaben: Ausgabe[] = [];
   neueAusgabe: Ausgabe = new Ausgabe();
   kategorien: String[] = [];
 
-  constructor(private ausgabenService: AusgabenService, private budgetsService: BudgetsService) {}
+  constructor(
+    private ausgabenService: AusgabenService,
+    private budgetsService: BudgetsService
+  ) {}
 
   ngOnInit(): void {
     // Ausgaben zum Anzeigen der Liste
@@ -24,53 +27,64 @@ export class AusgabenComponent implements OnInit {
   }
 
   getAusgaben(): void {
-    this.ausgabenService.getAusgaben().subscribe(ausgaben => {
+    this.ausgabenService.getAusgaben().subscribe((ausgaben) => {
       this.ausgaben = ausgaben;
-      this.ausgaben.forEach(ausgabe => ausgabe.datum = new Date(ausgabe.datum!));
+      this.ausgaben.forEach(
+        (ausgabe) => (ausgabe.datum = new Date(ausgabe.datum!))
+      );
       // Nach Datum ordnen
-      this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+      this.ausgaben.sort(
+        (a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum
+      );
     });
   }
 
   getKategorien(): void {
-    this.budgetsService.getBudgets().subscribe(budgets => {
-      budgets.forEach((budget: Budget) => this.kategorien.push(budget.kategorieName!));
+    this.budgetsService.getBudgets().subscribe((budgets) => {
+      budgets.forEach((budget: Budget) =>
+        this.kategorien.push(budget.kategorieName!)
+      );
       // Kategorie alphabetisch ordnen
       this.kategorien.sort();
     });
   }
 
   add(ausgabe: Ausgabe): void {
-    if(!ausgabe) return;
-    this.ausgabenService.addAusgabe(ausgabe).subscribe(ausgabe => {
+    if (!ausgabe) return;
+    this.ausgabenService.addAusgabe(ausgabe).subscribe((ausgabe) => {
       // Datum muss neu erzeugt werden, sonst Typ-Fehler wegen TypeScript
       let datum = ausgabe.datum?.toString();
       ausgabe.datum = new Date(datum!);
       // Neue Ausgabe hinzufügen
       this.ausgaben.push(ausgabe);
       // Nach Datum ordnen
-      this.ausgaben.sort((a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum)
+      this.ausgaben.sort(
+        (a: Ausgabe, b: Ausgabe) => <any>b.datum - <any>a.datum
+      );
     });
     // Hinzufügen-Form resetten
     this.neueAusgabe = new Ausgabe();
   }
 
   update(ausgabe: Ausgabe): void {
-    if(!ausgabe) return;
+    if (!ausgabe) return;
     this.ausgabenService.updateAusgabe(ausgabe).subscribe();
   }
 
   delete(ausgabe: Ausgabe): void {
-    if(!ausgabe.id) return;
+    if (!ausgabe.id) return;
     this.ausgabenService.deleteAusgabe(ausgabe.id!).subscribe();
-    this.ausgaben = this.ausgaben.filter(a => a.id !== ausgabe.id);
+    this.ausgaben = this.ausgaben.filter((a) => a.id !== ausgabe.id);
   }
 
-  getErrorMessage(formField: any): string{
-    if(formField.hasError("required")) return "Pflichtfeld";
-    if(formField.hasError("min") && formField.control.errors.min.actual < formField.control.errors.min.min) {
-      return "Der Wert darf nicht negativ sein";
+  getErrorMessage(formField: any): string {
+    if (formField.hasError('required')) return 'Pflichtfeld';
+    if (
+      formField.hasError('min') &&
+      formField.control.errors.min.actual < formField.control.errors.min.min
+    ) {
+      return 'Der Wert darf nicht negativ sein';
     }
-    return "";
+    return '';
   }
 }

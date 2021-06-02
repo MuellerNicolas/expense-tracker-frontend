@@ -11,41 +11,108 @@
     <form #ausgabeForm="ngForm" (ngSubmit)="add(neueAusgabe)">
       <mat-form-field appearance="outline">
         <mat-label>Datum</mat-label>
-        <input matInput [matDatepicker]="picker" required [(ngModel)]="neueAusgabe.datum" name="datum" ngDefaultControl #datum="ngModel">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          required
+          [(ngModel)]="neueAusgabe.datum"
+          name="datum"
+          ngDefaultControl
+          #datum="ngModel"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker [(ngModel)]="neueAusgabe.datum" name="datum" ngDefaultControl></mat-datepicker>
-        <mat-error *ngIf="datum.errors?.required">{{getErrorMessage(datum)}}</mat-error>
+        <mat-datepicker
+          #picker
+          [(ngModel)]="neueAusgabe.datum"
+          name="datum"
+          ngDefaultControl
+        ></mat-datepicker>
+        <mat-error *ngIf="datum.errors?.required">
+          {{ getErrorMessage(datum) }}
+        </mat-error>
       </mat-form-field>
-      <br/>
+      <br />
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput type="text" required minlength="1" [(ngModel)]="neueAusgabe.name" name="name" #name="ngModel">
-        <button mat-button *ngIf="neueAusgabe.name" matSuffix mat-icon-button aria-label="Clear" (click)="neueAusgabe.name=''">
+        <input
+          matInput
+          type="text"
+          required
+          minlength="1"
+          [(ngModel)]="neueAusgabe.name"
+          name="name"
+          #name="ngModel"
+        />
+        <button
+          mat-button
+          *ngIf="neueAusgabe.name"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="neueAusgabe.name = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
-        <mat-error *ngIf="name.errors?.required">{{getErrorMessage(name)}}</mat-error>
+        <mat-error *ngIf="name.errors?.required">
+          {{ getErrorMessage(name) }}
+        </mat-error>
       </mat-form-field>
-      <br/>
+      <br />
       <mat-form-field appearance="outline">
         <mat-label>Betrag</mat-label>
-        <input matInput type="number" required min="0" [(ngModel)]="neueAusgabe.betrag" name="betrag" #betrag="ngModel">
-        <button mat-button *ngIf="neueAusgabe.betrag" matSuffix mat-icon-button aria-label="Clear" (click)="neueAusgabe.betrag=0">
+        <input
+          matInput
+          type="number"
+          required
+          min="0"
+          [(ngModel)]="neueAusgabe.betrag"
+          name="betrag"
+          #betrag="ngModel"
+        />
+        <button
+          mat-button
+          *ngIf="neueAusgabe.betrag"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="neueAusgabe.betrag = 0"
+        >
           <mat-icon>close</mat-icon>
         </button>
-        <mat-error *ngIf="betrag.errors">{{getErrorMessage(betrag)}}</mat-error>
+        <mat-error *ngIf="betrag.errors">
+          {{ getErrorMessage(betrag) }}
+        </mat-error>
       </mat-form-field>
-      <br/>
+      <br />
       <mat-form-field appearance="outline">
         <mat-label>Kategorie</mat-label>
-        <mat-select required [(ngModel)]="neueAusgabe.kategorie" name="kategorie" #kategorie="ngModel" ngDefaultControl>
-          <mat-option *ngFor="let kategorie of kategorien" value={{kategorie}}>
-            {{kategorie}}
+        <mat-select
+          required
+          [(ngModel)]="neueAusgabe.kategorie"
+          name="kategorie"
+          #kategorie="ngModel"
+          ngDefaultControl
+        >
+          <mat-option
+            *ngFor="let kategorie of kategorien"
+            value="{{ kategorie }}"
+          >
+            {{ kategorie }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="kategorie.errors?.required">{{getErrorMessage(kategorie)}}</mat-error>
+        <mat-error *ngIf="kategorie.errors?.required">
+          {{ getErrorMessage(kategorie) }}
+        </mat-error>
       </mat-form-field>
-      <br/>
-      <button mat-raised-button type="submit" [disabled]="!ausgabeForm.form.valid" color="primary">Hinzufügen</button>
+      <br />
+      <button
+        mat-raised-button
+        type="submit"
+        [disabled]="!ausgabeForm.form.valid"
+        color="primary"
+      >
+        Hinzufügen
+      </button>
       <span class="einzug"></span>
     </form>
   </mat-expansion-panel>
@@ -53,58 +120,127 @@
   <mat-expansion-panel *ngFor="let ausgabe of ausgaben">
     <mat-expansion-panel-header>
       <mat-panel-description class="mat-panel-description">
-        {{ausgabe.datum?.getDate()}}.{{ausgabe.datum?.getMonth()}}.{{ausgabe.datum?.getFullYear()}}
+        {{ ausgabe.datum?.getDate() }}.{{ ausgabe.datum?.getMonth() }}.{{
+          ausgabe.datum?.getFullYear()
+        }}
       </mat-panel-description>
       <mat-panel-description class="mat-panel-description">
-        {{ausgabe.name}}
+        {{ ausgabe.name }}
       </mat-panel-description>
       <mat-panel-description class="mat-panel-description">
-        {{ausgabe.betrag | punktZuKomma}} €
+        {{ ausgabe.betrag | punktZuKomma }} €
       </mat-panel-description>
       <mat-panel-description class="mat-panel-description">
-        {{ausgabe.kategorie}}
+        {{ ausgabe.kategorie }}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <form #ausgabeForm="ngForm" (ngSubmit)="update(ausgabe)">
       <mat-form-field appearance="outline">
         <mat-label>Datum</mat-label>
-        <input matInput [matDatepicker]="picker" required [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl #datum="ngModel">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          required
+          [(ngModel)]="ausgabe.datum"
+          name="datum"
+          ngDefaultControl
+          #datum="ngModel"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker [(ngModel)]="ausgabe.datum" name="datum" ngDefaultControl></mat-datepicker>
-        <mat-error *ngIf="datum.errors">{{getErrorMessage(datum)}}</mat-error>
+        <mat-datepicker
+          #picker
+          [(ngModel)]="ausgabe.datum"
+          name="datum"
+          ngDefaultControl
+        ></mat-datepicker>
+        <mat-error *ngIf="datum.errors">{{ getErrorMessage(datum) }}</mat-error>
       </mat-form-field>
-      <br/>
+      <br />
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput type="text" required minlength="1" [(ngModel)]="ausgabe.name" name="name" #name="ngModel">
-        <button mat-button *ngIf="ausgabe.name" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.name=''">
+        <input
+          matInput
+          type="text"
+          required
+          minlength="1"
+          [(ngModel)]="ausgabe.name"
+          name="name"
+          #name="ngModel"
+        />
+        <button
+          mat-button
+          *ngIf="ausgabe.name"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="ausgabe.name = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
-        <mat-error *ngIf="name.errors?.required">{{getErrorMessage(name)}}</mat-error>
+        <mat-error *ngIf="name.errors?.required">
+          {{ getErrorMessage(name) }}
+        </mat-error>
       </mat-form-field>
-      <br/>
+      <br />
       <mat-form-field appearance="outline">
         <mat-label>Betrag</mat-label>
-        <input matInput type="number" required min="0" [(ngModel)]="ausgabe.betrag" name="betrag" #betrag="ngModel">
-        <button mat-button *ngIf="ausgabe.betrag" matSuffix mat-icon-button aria-label="Clear" (click)="ausgabe.betrag=0">
+        <input
+          matInput
+          type="number"
+          required
+          min="0"
+          [(ngModel)]="ausgabe.betrag"
+          name="betrag"
+          #betrag="ngModel"
+        />
+        <button
+          mat-button
+          *ngIf="ausgabe.betrag"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="ausgabe.betrag = 0"
+        >
           <mat-icon>close</mat-icon>
         </button>
-        <mat-error *ngIf="betrag.errors">{{getErrorMessage(betrag)}}</mat-error>
+        <mat-error *ngIf="betrag.errors">
+          {{ getErrorMessage(betrag) }}
+        </mat-error>
       </mat-form-field>
-      <br/>
+      <br />
       <mat-form-field appearance="outline">
         <mat-label>Kategorie</mat-label>
-        <mat-select required [(ngModel)]="ausgabe.kategorie" name="kategorie" #kategorie="ngModel" ngDefaultControl>
-          <mat-option *ngFor="let kategorie of kategorien" value={{kategorie}}>
-            {{kategorie}}
+        <mat-select
+          required
+          [(ngModel)]="ausgabe.kategorie"
+          name="kategorie"
+          #kategorie="ngModel"
+          ngDefaultControl
+        >
+          <mat-option
+            *ngFor="let kategorie of kategorien"
+            value="{{ kategorie }}"
+          >
+            {{ kategorie }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="kategorie.errors?.required">{{getErrorMessage(kategorie)}}</mat-error>
+        <mat-error *ngIf="kategorie.errors?.required">
+          {{ getErrorMessage(kategorie) }}
+        </mat-error>
       </mat-form-field>
-      <br/>
-      <button mat-raised-button type="submit" [disabled]="!ausgabeForm.form.valid" color="primary">Aktualisieren</button>
+      <br />
+      <button
+        mat-raised-button
+        type="submit"
+        [disabled]="!ausgabeForm.form.valid"
+        color="primary"
+      >
+        Aktualisieren
+      </button>
       <span class="einzug"></span>
-      <button mat-raised-button color="warn" (click)="delete(ausgabe)">Löschen</button>
+      <button mat-raised-button color="warn" (click)="delete(ausgabe)">
+        Löschen
+      </button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>

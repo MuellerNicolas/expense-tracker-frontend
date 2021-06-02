@@ -13,15 +13,14 @@ describe('BudgetsComponent', () => {
     const budgetsServiceStub = {
       getBudgets() {
         return of(BUDGETS);
-      }
+      },
     };
 
     await TestBed.configureTestingModule({
-      imports: [ FormsModule ],
-      declarations: [ BudgetsComponent ],
-      providers: [ {provide: BudgetsService, useValue: budgetsServiceStub}]
-    })
-    .compileComponents();
+      imports: [FormsModule],
+      declarations: [BudgetsComponent],
+      providers: [{ provide: BudgetsService, useValue: budgetsServiceStub }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BudgetsComponent);
     component = fixture.componentInstance;
