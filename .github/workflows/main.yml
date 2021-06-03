@@ -24,9 +24,13 @@ jobs:
       - name: Setup
         run: npm ci
 
-      - name: Test
+      - name: Unit Test
         run: |
           npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+
+      - name: E2E Test
+        run: |
+          npm e2e:ci
   deploy:
     needs: test
 
