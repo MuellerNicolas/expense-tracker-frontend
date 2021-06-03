@@ -63,7 +63,7 @@ export class AusgabenService {
       );
   }
 
-  deleteAusgabe(id: number): Observable<Ausgabe> {
+  deleteAusgabe(id: string): Observable<Ausgabe> {
     return this.httpClient
       .delete<Ausgabe>(
         `${this.backendAPI}/ausgaben/${id}`,

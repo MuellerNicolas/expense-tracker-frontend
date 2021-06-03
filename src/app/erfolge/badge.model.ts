@@ -11,7 +11,7 @@ const svgImages: any = {
 };
 
 export class Badge {
-  id?: number;
+  id?: string;
   kategorieName?: string;
   monateEingehaltenTotal?: number;
   symbol?: string;
@@ -20,7 +20,7 @@ export class Badge {
   fortschritt?: number;
 
   constructor(
-    id?: number,
+    id?: string,
     kategorieName?: string,
     monateEingehaltenTotal?: number
   ) {
@@ -35,7 +35,7 @@ export class Badge {
     );
   }
 
-  getFarbe(id: number, monateEingehaltenTotal: number) {
+  getFarbe(id: string, monateEingehaltenTotal: number) {
     const prefix = 'kategorie-';
     if (monateEingehaltenTotal < 3) {
       return prefix + id;

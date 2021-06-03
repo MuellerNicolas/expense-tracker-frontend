@@ -1,9 +1,9 @@
 export class Budget {
-  budgetId?: number;
+  budgetId?: string;
   budget?: number;
   kategorie?: string;
 
-  constructor(budgetId?: number, budget?: number, kategorie?: string) {
+  constructor(budgetId?: string, budget?: number, kategorie?: string) {
     this.budgetId = budgetId;
     this.budget = budget;
     this.kategorie = kategorie;

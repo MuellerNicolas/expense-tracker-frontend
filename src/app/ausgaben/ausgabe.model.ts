@@ -1,5 +1,5 @@
 export class Ausgabe {
-  expenseId?: number;
+  expenseId?: string;
   name?: string;
   betrag?: number;
   kategorie?: string;
@@ -7,7 +7,7 @@ export class Ausgabe {
   userId: string;
 
   constructor(
-    expenseId?: number,
+    expenseId?: string,
     name?: string,
     betrag?: number,
     kategorie?: string,
