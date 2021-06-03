@@ -30,7 +30,7 @@ jobs:
 
       - name: E2E Test
         run: |
-          npm e2e:ci
+          npm run e2e:ci
   deploy:
     needs: test
 
