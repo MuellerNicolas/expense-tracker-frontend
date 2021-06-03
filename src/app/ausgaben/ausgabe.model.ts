@@ -1,21 +1,23 @@
 export class Ausgabe {
-  id?: number;
+  expenseId?: number;
   name?: string;
   betrag?: number;
   kategorie?: string;
   datum?: Date;
+  userId: string;
 
   constructor(
-    id?: number,
+    expenseId?: number,
     name?: string,
     betrag?: number,
     kategorie?: string,
     datum?: Date
   ) {
-    this.id = id;
+    this.expenseId = expenseId;
     this.name = name;
     this.betrag = betrag;
     this.kategorie = kategorie;
     this.datum = datum;
+    this.userId = '1';
   }
 }

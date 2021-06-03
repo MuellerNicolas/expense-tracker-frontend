@@ -40,7 +40,7 @@ export class AusgabenService {
   updateAusgabe(ausgabe: Ausgabe): Observable<Ausgabe> {
     return this.httpClient
       .put<Ausgabe>(
-        `${this.backendAPI}/ausgaben/${ausgabe.id}`,
+        `${this.backendAPI}/ausgaben/${ausgabe.expenseId}`,
         ausgabe,
         this.serviceHelperService.getHttpOptionPutAndPost()
       )
@@ -54,7 +54,7 @@ export class AusgabenService {
     ausgabe.datum = ausgabe.datum!.toISOString();
     return this.httpClient
       .post<Ausgabe>(
-        `${this.backendAPI}/ausgaben`,
+        `${this.backendAPI}/ausgaben/`,
         ausgabe,
         this.serviceHelperService.getHttpOptionPutAndPost()
       )
