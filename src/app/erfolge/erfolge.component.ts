@@ -82,13 +82,13 @@ export class ErfolgeComponent implements OnInit {
       this.badges = badges.map((badge: Badge) => {
         return new Badge(
           badge.id,
-          badge.kategorieName,
+          badge.kategorie,
           badge.monateEingehaltenTotal
         );
       });
       // Nach Alphabet ordnen
       this.badges.sort((a: Badge, b: Badge) =>
-        a.kategorieName!.localeCompare(b.kategorieName!)
+        a.kategorie!.localeCompare(b.kategorie!)
       );
     });
   }

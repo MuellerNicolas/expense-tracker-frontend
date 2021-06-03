@@ -12,7 +12,7 @@ const svgImages: any = {
 
 export class Badge {
   id?: number;
-  kategorieName?: string;
+  kategorie?: string;
   monateEingehaltenTotal?: number;
   symbol?: string;
   farbe?: string;
@@ -21,11 +21,11 @@ export class Badge {
 
   constructor(
     id?: number,
-    kategorieName?: string,
+    kategorie?: string,
     monateEingehaltenTotal?: number
   ) {
     this.id = id;
-    this.kategorieName = kategorieName;
+    this.kategorie = kategorie;
     this.monateEingehaltenTotal = monateEingehaltenTotal;
     this.symbol = svgImages[id!];
     this.farbe = this.getFarbe(id!, monateEingehaltenTotal!);
