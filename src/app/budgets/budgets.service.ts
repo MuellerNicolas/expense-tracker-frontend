@@ -30,7 +30,7 @@ export class BudgetsService {
   updateBudget(budget: Budget): Observable<Budget> {
     return this.httpClient
       .put<Budget>(
-        `${this.backendAPI}/budgets/${budget.id}`,
+        `${this.backendAPI}/budgets/${budget.budgetId}`,
         budget,
         this.serviceHelperService.getHttpOptionPutAndPost()
       )

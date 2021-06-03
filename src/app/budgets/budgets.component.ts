@@ -21,7 +21,7 @@ export class BudgetsComponent implements OnInit {
       this.budgets = budgets;
       // Nach Kategorie alphabetisch ordnen
       this.budgets.sort((a: Budget, b: Budget) =>
-        a.kategorieName!.localeCompare(b.kategorieName!)
+        a.kategorie!.localeCompare(b.kategorie!)
       );
     });
   }

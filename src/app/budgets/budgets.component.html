@@ -5,7 +5,7 @@
   <mat-expansion-panel *ngFor="let budget of budgets">
     <mat-expansion-panel-header>
       <mat-panel-description class="mat-panel-description">
-        {{ budget.kategorieName }}
+        {{ budget.kategorie }}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <form #budgetForm="ngForm" (ngSubmit)="update(budget)">
@@ -16,17 +16,17 @@
           type="number"
           required
           min="0"
-          [(ngModel)]="budget.betrag"
+          [(ngModel)]="budget.budget"
           name="betrag"
           #betrag="ngModel"
         />
         <button
           mat-button
-          *ngIf="budget.betrag"
+          *ngIf="budget.budget"
           matSuffix
           mat-icon-button
           aria-label="Clear"
-          (click)="budget.betrag = 0"
+          (click)="budget.budget = 0"
         >
           <mat-icon>close</mat-icon>
         </button>

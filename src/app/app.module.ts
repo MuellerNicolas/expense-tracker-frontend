@@ -97,11 +97,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
     MatCardModule,
     HttpClientModule,
     NgxChartsModule,
-    environment.production
-      ? []
-      : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-          dataEncapsulation: false,
-        }),
+    // environment.production
+    //   ? []
+    //   : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+    //       dataEncapsulation: false,
+    //     }),
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
   bootstrap: [AppComponent],

@@ -1,11 +1,11 @@
 export class Budget {
-  id?: number;
-  betrag?: number;
-  kategorieName?: string;
+  budgetId?: number;
+  budget?: number;
+  kategorie?: string;
 
-  constructor(id?: number, betrag?: number, kategorieName?: string) {
-    this.id = id;
-    this.betrag = betrag;
-    this.kategorieName = kategorieName;
+  constructor(budgetId?: number, budget?: number, kategorie?: string) {
+    this.budgetId = budgetId;
+    this.budget = budget;
+    this.kategorie = kategorie;
   }
 }
