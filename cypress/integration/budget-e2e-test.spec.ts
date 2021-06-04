@@ -15,19 +15,11 @@ describe('Budgets E2E Test', () => {
     // find the field and fill out
     cy.get('#mat-input-0').clear().type('2000');
 
-    // check if Update PUT HTTP gets called
-    // cy.intercept('PUT', 'api/budgets/1', (req) => {
-    //   expect(req.body).to.include('2000');
-    // });
-
     cy.intercept('api/budgets/1', 'success').as('update');
 
     // clicking button for updating the value
     cy.get('[type=submit]').first().click();
 
-    // cy.wait(['@update']).then((interception) => {
-    //   console.log(interception);
-    // });
     cy.wait('@update')
       .its('response.statusCode')
       .should('eq', 200) // 200 OK;
