@@ -78,6 +78,57 @@ describe('AusgabenComponent', () => {
     expect(await button.isDisabled()).toBe(true);
   });
 
+  it('should display error message "Pflichtfeld"', () => {
+    const formField = {
+      hasError(input: string): boolean {
+        if (input === 'required') return true;
+        if (input === 'min') return false;
+        else return false;
+      },
+    };
+    expect(component.getErrorMessage(formField)).toBe('Pflichtfeld');
+  });
+
+  it('should display error message "Der Wert darf nicht negativ sein"', () => {
+    const formField = {
+      control: {
+        errors: {
+          min: {
+            actual: -1,
+            min: 0,
+          },
+        },
+      },
+      hasError(input: string): boolean {
+        if (input === 'required') return false;
+        if (input === 'min') return true;
+        else return false;
+      },
+    };
+    expect(component.getErrorMessage(formField)).toBe(
+      'Der Wert darf nicht negativ sein'
+    );
+  });
+
+  it('should display no error message', () => {
+    const formField = {
+      control: {
+        errors: {
+          min: {
+            actual: -1,
+            min: 0,
+          },
+        },
+      },
+      hasError(input: string): boolean {
+        if (input === 'required') return false;
+        if (input === 'min') return false;
+        else return false;
+      },
+    };
+    expect(component.getErrorMessage(formField)).toBe('');
+  });
+
   // it('should enable "Hinzufügen"-Button with inputs', fakeAsync(() => {
   //   // component.neueAusgabe.datum = new Date('December 17, 1995 03:24:00');
   //   // component.neueAusgabe.name = 'Neue Ausgabe';
