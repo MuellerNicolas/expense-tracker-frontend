@@ -16,6 +16,7 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { MatButtonHarness } from '@angular/material/button/testing';
 import { MatSelectHarness } from '@angular/material/select/testing';
+import { PunktZuKommaPipe } from '../shared/punkt-zu-komma.pipe';
 
 import { AusgabenComponent } from './ausgaben.component';
 import { AusgabenService } from './ausgaben.service';
@@ -78,7 +79,8 @@ describe('AusgabenComponent', () => {
     expect(await button.isDisabled()).toBe(true);
   });
 
-  it('should display error message "Pflichtfeld"', () => {
+  it('should return error message "Pflichtfeld"', () => {
+    // FormField-Mock
     const formField = {
       hasError(input: string): boolean {
         if (input === 'required') return true;
@@ -89,7 +91,8 @@ describe('AusgabenComponent', () => {
     expect(component.getErrorMessage(formField)).toBe('Pflichtfeld');
   });
 
-  it('should display error message "Der Wert darf nicht negativ sein"', () => {
+  it('should return error message "Der Wert darf nicht negativ sein"', () => {
+    // FormField-Mock
     const formField = {
       control: {
         errors: {
@@ -110,16 +113,9 @@ describe('AusgabenComponent', () => {
     );
   });
 
-  it('should display no error message', () => {
+  it('should return empty error message', () => {
+    // FormField-Mock
     const formField = {
-      control: {
-        errors: {
-          min: {
-            actual: -1,
-            min: 0,
-          },
-        },
-      },
       hasError(input: string): boolean {
         if (input === 'required') return false;
         if (input === 'min') return false;
@@ -127,6 +123,41 @@ describe('AusgabenComponent', () => {
       },
     };
     expect(component.getErrorMessage(formField)).toBe('');
+  });
+
+  it('should display Ausgaben', () => {
+    component.ngOnInit();
+    console.log(component);
+    const allExpansionPanels = document.querySelectorAll('mat-expansion-panel');
+    console.log(allExpansionPanels);
+    // convert obj to array
+    const expansionPanels = Array.from(allExpansionPanels);
+    console.log(expansionPanels);
+    expansionPanels.forEach((expansionPanel) => {
+      component.ausgaben.forEach((ausgabe) => {
+        if (expansionPanel.classList.contains(ausgabe.expenseId!)) {
+          // Get expected formatted Date
+          let day: any = ausgabe.datum!.getDate();
+          let month: any = ausgabe.datum!.getMonth();
+          if (String(day).length == 1) day = '0' + day;
+          if (String(month).length == 1) month = '0' + month;
+          const expectedDate =
+            day + '.' + month + '.' + ausgabe.datum!.getFullYear();
+          // Construct expectedHeaderText
+          const expectedHeaderText =
+            expectedDate +
+            ' ' +
+            ausgabe.name +
+            ' ' +
+            new PunktZuKommaPipe().transform(ausgabe.betrag) +
+            ' € ' +
+            ausgabe.kategorie;
+          // get html-node
+          const node: any = expansionPanel.childNodes[0];
+          expect(node.innerText).toBe(expectedHeaderText);
+        }
+      });
+    });
   });
 
   // it('should enable "Hinzufügen"-Button with inputs', fakeAsync(() => {

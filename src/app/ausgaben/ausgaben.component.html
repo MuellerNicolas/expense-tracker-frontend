@@ -2,7 +2,7 @@
 
 <mat-accordion>
   <!-- Neue Ausgabe -->
-  <mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel id="neue-ausgabe" [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title id="neue-ausgabe-hinzufuegen">
         Neue Ausgabe hinzufügen
@@ -122,7 +122,10 @@
     </form>
   </mat-expansion-panel>
   <!-- Alle Ausgaben -->
-  <mat-expansion-panel *ngFor="let ausgabe of ausgaben">
+  <mat-expansion-panel
+    class="{{ ausgabe.expenseId }}"
+    *ngFor="let ausgabe of ausgaben"
+  >
     <mat-expansion-panel-header>
       <mat-panel-description class="mat-panel-description">
         {{ ausgabe.datum?.getDate() }}.{{ ausgabe.datum?.getMonth() }}.{{
