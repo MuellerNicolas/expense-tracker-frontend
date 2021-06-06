@@ -110,6 +110,7 @@
         type="submit"
         [disabled]="!ausgabeForm.form.valid"
         color="primary"
+        id="buttonNeueAusgabeHinzufuegen"
       >
         Hinzufügen
       </button>
@@ -117,7 +118,10 @@
     </form>
   </mat-expansion-panel>
   <!-- Alle Ausgaben -->
-  <mat-expansion-panel *ngFor="let ausgabe of ausgaben">
+  <mat-expansion-panel
+    class="{{ ausgabe.expenseId }}"
+    *ngFor="let ausgabe of ausgaben"
+  >
     <mat-expansion-panel-header>
       <mat-panel-description class="mat-panel-description">
         {{ ausgabe.datum?.getDate() }}.{{ ausgabe.datum?.getMonth() }}.{{
