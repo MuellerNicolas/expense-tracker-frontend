@@ -125,7 +125,7 @@ describe('AusgabenComponent', () => {
     expect(component.getErrorMessage(formField)).toBe('');
   });
 
-  it('should display Ausgaben', () => {
+  it('should display Ausgaben Header', () => {
     component.ngOnInit();
     console.log(component);
     const allExpansionPanels = document.querySelectorAll('mat-expansion-panel');
@@ -159,6 +159,38 @@ describe('AusgabenComponent', () => {
       });
     });
   });
+
+  // it('should display Ausgaben Details in FormElements', () => {
+  //   component.ngOnInit();
+  //   const allExpansionPanels = document.querySelectorAll('mat-expansion-panel');
+  //   // convert obj to array
+  //   const expansionPanels = Array.from(allExpansionPanels);
+  //   console.log(expansionPanels);
+  //   expansionPanels.forEach((expansionPanel) => {
+  //     component.ausgaben.forEach((ausgabe) => {
+  //       if (expansionPanel.classList.contains(ausgabe.expenseId!)) {
+  //         const node: any = expansionPanel.childNodes[1].childNodes[0];
+
+  //         console.warn(node);
+
+  //         const datum: any = node.attributes[7].textContent;
+  //         console.warn(datum);
+  //         // expect(datum.value).toBe(ausgabe.datum?.toString());
+  //         // // Construct expectedHeaderText
+  //         // const expectedHeaderText =
+  //         //   expectedDate +
+  //         //   ' ' +
+  //         //   ausgabe.name +
+  //         //   ' ' +
+  //         //   new PunktZuKommaPipe().transform(ausgabe.betrag) +
+  //         //   ' € ' +
+  //         //   ausgabe.kategorie;
+  //         // const name: any = expansionPanel.childNodes[1].childNodes[1];
+  //         // const betrag: any = expansionPanel.childNodes[1].childNodes[3];
+  //       }
+  //     });
+  //   });
+  // });
 
   // it('should enable "Hinzufügen"-Button with inputs', fakeAsync(() => {
   //   // component.neueAusgabe.datum = new Date('December 17, 1995 03:24:00');
