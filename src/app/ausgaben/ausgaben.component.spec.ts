@@ -113,7 +113,7 @@ describe('AusgabenComponent', () => {
     );
   });
 
-  it('should return empty error message', () => {
+  it('should return an empty error message', () => {
     // FormField-Mock
     const formField = {
       hasError(input: string): boolean {
