@@ -64,11 +64,46 @@ describe('Ausgaben E2E Test', () => {
     cy.get('[type=submit]').first().should('be.disabled');
   });
 
-  it('should update an existing expense', () => {});
+  it('should update an existing expense', () => {
+    cy.get('#mat-expansion-panel-header-1').click();
+    cy.get('#mat-input-5').clear().type('20');
 
-  it('should not update an existing expense with missing fields', () => {});
+    cy.intercept('PUT', 'api/ausgaben/', (req) => {
+      req.body.datum = '2021-06-14T22:00:00.000Z';
+    }).as('update');
 
-  it('should not update an existing expense with a negative "betrag" value', () => {});
+    //update
+    cy.get('[type=submit]').eq(1).click();
 
-  it('should delete an expense', () => {});
+    //confirm outgoing request
+    /*cy.get('@update').its('request.body').should('deep.equal', {
+      userId: '1',
+      name: 'Wein',
+      betrag: 20,
+      kategorie: 'Essen und Trinken',
+      datum: '2021-06-14T22:00:00.000Z',
+    });*/
+  });
+
+  it('should not update an existing expense with missing fields', () => {
+    cy.get('#mat-expansion-panel-header-1').click();
+    cy.get('#mat-input-5').clear();
+    cy.get('#mat-input-4').click();
+    cy.get('[type=submit]').eq(1).should('be.disabled');
+  });
+
+  it('should not update an existing expense with a negative "betrag" value', () => {
+    cy.get('#mat-expansion-panel-header-1').click();
+    cy.get('#mat-input-5').clear().type('-30');
+    cy.get('#mat-input-4').click();
+    cy.get('[type=submit]').eq(1).should('be.disabled');
+  });
+
+  it('should delete an expense', () => {
+    cy.get('#mat-expansion-panel-header-1').click();
+    cy.intercept('DELETE', 'api/ausgaben/').as('delete');
+    cy.contains('Löschen').eq(0).click();
+  });
+
+  it('should be possible to load more expenses', () => {});
 });
