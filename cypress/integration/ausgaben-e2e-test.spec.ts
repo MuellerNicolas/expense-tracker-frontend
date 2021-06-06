@@ -70,5 +70,5 @@ describe('Ausgaben E2E Test', () => {
 
   it('should not update an existing expense with a negative "betrag" value', () => {});
 
-  it('should update an delete expense', () => {});
+  it('should delete an expense', () => {});
 });
