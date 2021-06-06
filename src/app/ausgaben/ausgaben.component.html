@@ -2,7 +2,7 @@
 
 <mat-accordion>
   <!-- Neue Ausgabe -->
-  <mat-expansion-panel id="neue-ausgabe" [expanded]="true">
+  <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title id="neue-ausgabe-hinzufuegen">
         Neue Ausgabe hinzufügen
@@ -19,7 +19,6 @@
           name="datum"
           ngDefaultControl
           #datum="ngModel"
-          id="neue-ausgabe-input-datum"
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker
@@ -43,7 +42,6 @@
           [(ngModel)]="neueAusgabe.name"
           name="name"
           #name="ngModel"
-          id="neue-ausgabe-input-name"
         />
         <button
           mat-button
@@ -70,7 +68,6 @@
           [(ngModel)]="neueAusgabe.betrag"
           name="betrag"
           #betrag="ngModel"
-          id="neue-ausgabe-input-betrag"
         />
         <button
           mat-button
@@ -95,7 +92,6 @@
           name="kategorie"
           #kategorie="ngModel"
           ngDefaultControl
-          id="neue-ausgabe-input-kategorie"
         >
           <mat-option
             *ngFor="let kategorie of kategorien"
