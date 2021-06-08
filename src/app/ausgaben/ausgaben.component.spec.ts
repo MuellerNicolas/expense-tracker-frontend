@@ -176,10 +176,10 @@ describe('AusgabenComponent', () => {
   it('should delete ausgabe', async () => {
     fixture.detectChanges();
     fixture.whenStable().then(async () => {
-      const ausgabeLoader = await loader.getChildLoader(
+      const parentComponent = await loader.getChildLoader(
         '.60bc9d0817bb78102e5a0ceb'
       );
-      const deleteButton = await ausgabeLoader.getHarness(
+      const deleteButton = await parentComponent.getHarness(
         MatButtonHarness.with({
           selector: '.delete',
         })
