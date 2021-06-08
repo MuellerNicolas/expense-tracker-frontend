@@ -16,6 +16,7 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { MatButtonHarness } from '@angular/material/button/testing';
 import { MatSelectHarness } from '@angular/material/select/testing';
+import { MatInputHarness } from '@angular/material/input/testing';
 import { PunktZuKommaPipe } from '../shared/punkt-zu-komma.pipe';
 
 import { AusgabenComponent } from './ausgaben.component';
@@ -127,12 +128,9 @@ describe('AusgabenComponent', () => {
 
   it('should display Ausgaben Header', () => {
     component.ngOnInit();
-    console.log(component);
     const allExpansionPanels = document.querySelectorAll('mat-expansion-panel');
-    console.log(allExpansionPanels);
     // convert obj to array
     const expansionPanels = Array.from(allExpansionPanels);
-    console.log(expansionPanels);
     expansionPanels.forEach((expansionPanel) => {
       component.ausgaben.forEach((ausgabe) => {
         if (expansionPanel.classList.contains(ausgabe.expenseId!)) {
@@ -157,6 +155,45 @@ describe('AusgabenComponent', () => {
           expect(node.innerText).toBe(expectedHeaderText);
         }
       });
+    });
+  });
+
+  it('should update field', async () => {
+    const inputField = await loader.getHarness<MatInputHarness>(
+      MatInputHarness.with({
+        value: 'Fahrradpumpe',
+      })
+    );
+    fixture.detectChanges();
+    inputField.setValue('Luftpumpe').then(() => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(component.ausgaben[2].name).toBe('Luftpumpe');
+      });
+    });
+  });
+
+  it('should delete ausgabe', async () => {
+    fixture.detectChanges();
+    fixture.whenStable().then(async () => {
+      const ausgabeLoader = await loader.getChildLoader(
+        '.60bc9d0817bb78102e5a0ceb'
+      );
+      const deleteButton = await ausgabeLoader.getHarness(
+        MatButtonHarness.with({
+          selector: '.delete',
+        })
+      );
+      expect(await deleteButton.isDisabled()).toBe(false);
+      await deleteButton.click();
+      const containsAusgabe = component.ausgaben
+        .map((ausgabe) => {
+          return ausgabe.expenseId === '60bc9d0817bb78102e5a0ceb'
+            ? true
+            : false;
+        })
+        .some((bool) => bool === true);
+      expect(containsAusgabe).toBeFalse();
     });
   });
 
