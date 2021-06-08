@@ -37,11 +37,20 @@ export class AusgabenService {
       );
   }
 
-  updateAusgabe(ausgabe: Ausgabe): Observable<Ausgabe> {
+  updateAusgabe(ausgabe: any): Observable<Ausgabe> {
+    let ausgabeWithIsoDate: any = new Ausgabe(
+      ausgabe.expenseId,
+      ausgabe.name,
+      ausgabe.betrag,
+      ausgabe.kategorie,
+      ausgabe.datum
+    );
+    // Backend akzeptiert nur ISO Datum, Frontend braucht aber JS-Objekt ohne ISO
+    ausgabeWithIsoDate.datum!.toISOString();
     return this.httpClient
       .put<Ausgabe>(
-        `${this.backendAPI}/ausgaben/${ausgabe.expenseId}`,
-        ausgabe,
+        `${this.backendAPI}/ausgaben/${ausgabeWithIsoDate.expenseId}`,
+        ausgabeWithIsoDate,
         this.serviceHelperService.getHttpOptionPutAndPost()
       )
       .pipe(
