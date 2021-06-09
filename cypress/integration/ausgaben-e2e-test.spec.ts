@@ -68,7 +68,7 @@ describe('Ausgaben E2E Test', () => {
     cy.get('#mat-expansion-panel-header-1').click();
     cy.get('#mat-input-5').clear().type('20');
 
-    cy.intercept('PUT', 'api/ausgaben/', (req) => {
+    cy.intercept('PUT', 'api/ausgaben/*', (req) => {
       req.body.datum = '2021-06-14T22:00:00.000Z';
     }).as('update');
 
@@ -76,13 +76,14 @@ describe('Ausgaben E2E Test', () => {
     cy.get('[type=submit]').eq(1).click();
 
     //confirm outgoing request
-    /*cy.get('@update').its('request.body').should('deep.equal', {
+    cy.get('@update').its('request.body').should('deep.equal', {
       userId: '1',
       name: 'Wein',
       betrag: 20,
+      expenseId: 3,
       kategorie: 'Essen und Trinken',
       datum: '2021-06-14T22:00:00.000Z',
-    });*/
+    });
   });
 
   it('should not update an existing expense with missing fields', () => {
