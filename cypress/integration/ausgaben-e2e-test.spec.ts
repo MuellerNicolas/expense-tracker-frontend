@@ -7,8 +7,10 @@ describe('Ausgaben E2E Test', () => {
     cy.intercept('GET', 'api/budgets/', { fixture: 'budgets' }).as(
       'getBudgets'
     );
+
     // Visit the view Ausgabe on the website
     cy.visit('/ausgaben');
+
     // wait for the intercepted data anwser
     cy.wait(['@getAusgaben', '@getBudgets']);
   });
@@ -16,26 +18,39 @@ describe('Ausgaben E2E Test', () => {
   it('should add new expense', () => {
     //click the date picker
     cy.get('[type=button]').first().click();
+
     //choose date 15
     cy.contains('15').click();
+
     // find the other fields and fill out
     cy.get('#mat-input-1').type('Pizza essen');
     cy.get('#mat-input-2').type('40');
     cy.get('#mat-select-0').click();
     cy.get('#mat-option-2').click();
+
     // static date
     cy.intercept('POST', 'api/ausgaben/', (req) => {
       req.body.datum = '2021-06-14T22:00:00.000Z';
     }).as('newExpenseRequest');
+
     // submit
     cy.get('[type=submit]').first().click();
-    // check outgoing request
-    cy.get('@newExpenseRequest').its('request.body').should('deep.equal', {
-      userId: '1',
-      name: 'Pizza essen',
-      betrag: 40,
-      kategorie: 'Essen und Trinken',
-      datum: '2021-06-14T22:00:00.000Z',
+
+    // check request
+    cy.wait('@newExpenseRequest').should(({ request, response }) => {
+      // check if the request aims at the correct collection
+      expect(request.url).include('/api/ausgaben/');
+      // check if the request executes the right http method
+      expect(request.method).to.deep.equal('POST');
+      // check if the request body is as expected
+      expect(request.body).to.deep.equal({
+        userId: '1',
+        name: 'Pizza essen',
+        betrag: 40,
+        kategorie: 'Essen und Trinken',
+        datum: '2021-06-14T22:00:00.000Z',
+      });
+      expect(response!.statusCode).to.deep.equal(200);
     });
   });
 
@@ -75,14 +90,19 @@ describe('Ausgaben E2E Test', () => {
     //update
     cy.get('[type=submit]').eq(1).click();
 
-    //confirm outgoing request
-    cy.get('@update').its('request.body').should('deep.equal', {
-      userId: '1',
-      name: 'Wein',
-      betrag: 20,
-      expenseId: 3,
-      kategorie: 'Essen und Trinken',
-      datum: '2021-06-14T22:00:00.000Z',
+    cy.wait('@update').should(({ request, response }) => {
+      expect(request.url).include('/api/ausgaben/3');
+      expect(request.method).to.deep.equal('PUT');
+      expect(request.body).to.deep.equal({
+        userId: '1',
+        name: 'Wein',
+        betrag: 20,
+        expenseId: 3,
+        kategorie: 'Essen und Trinken',
+        datum: '2021-06-14T22:00:00.000Z',
+      });
+      // check if the response status code is 200 and therefore successful
+      expect(response!.statusCode).to.deep.equal(200);
     });
   });
 
@@ -102,9 +122,13 @@ describe('Ausgaben E2E Test', () => {
 
   it('should delete an expense', () => {
     cy.get('#mat-expansion-panel-header-1').click();
-    cy.intercept('DELETE', 'api/ausgaben/').as('delete');
+    cy.intercept('DELETE', 'api/ausgaben/*').as('delete');
     cy.contains('Löschen').eq(0).click();
-  });
 
-  it('should be possible to load more expenses', () => {});
+    cy.wait('@delete').should(({ request, response }) => {
+      expect(request.url).include('/api/ausgaben/3');
+      expect(request.method).to.deep.equal('DELETE');
+      expect(response!.statusCode).to.deep.equal(200);
+    });
+  });
 });
