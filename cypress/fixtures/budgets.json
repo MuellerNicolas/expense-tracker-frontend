@@ -1,46 +1,46 @@
 [
   {
-    "budgetId": "1",
+    "budgetId": "60b8c2e0e27bd56ec44e30a4",
     "kategorie": "Ausbildung und Studium",
     "budget": 5
   },
   {
-    "budgetId": "2",
+    "budgetId": "60b8c2e3e27bd56ec44e30a5",
     "kategorie": "Bekleidung",
     "budget": 5
   },
   {
-    "budgetId": "3",
+    "budgetId": "60bb64c1758cee7c7361ea6b",
     "kategorie": "Essen und Trinken",
     "budget": 1.5
   },
   {
-    "budgetId": "4",
+    "budgetId": "60bb64d0758cee7c7361ea6c",
     "kategorie": "Freizeit",
     "budget": 10
   },
   {
-    "budgetId": "5",
+    "budgetId": "60bb64d7758cee7c7361ea6d",
     "kategorie": "Infrastruktur",
     "budget": 4
   },
   {
-    "budgetId": "6",
+    "budgetId": "60bb64dd758cee7c7361ea6e",
     "kategorie": "Mobilität",
     "budget": 5
   },
   {
-    "budgetId": "7",
+    "budgetId": "60bb64e4758cee7c7361ea6f",
     "kategorie": "Reisen",
     "budget": 3.5
   },
   {
-    "budgetId": "8",
+    "budgetId": "60bb64eb758cee7c7361ea70",
     "kategorie": "Sonstige Ausgaben",
     "budget": 5
   },
   {
-    "budgetId": "9",
+    "budgetId": "60bb64f1758cee7c7361ea71",
     "kategorie": "Versicherung",
     "budget": 5
   }

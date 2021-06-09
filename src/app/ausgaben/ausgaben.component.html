@@ -124,7 +124,7 @@
   >
     <mat-expansion-panel-header>
       <mat-panel-description class="mat-panel-description">
-        {{ ausgabe.datum?.getDate() }}.{{ ausgabe.datum?.getMonth() }}.{{
+        {{ ausgabe.datum?.getDate() }}.{{ ausgabe.datum!.getMonth() + 1 }}.{{
           ausgabe.datum?.getFullYear()
         }}
       </mat-panel-description>

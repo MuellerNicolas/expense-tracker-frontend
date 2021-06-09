@@ -37,11 +37,28 @@ export class AusgabenService {
       );
   }
 
-  updateAusgabe(ausgabe: Ausgabe): Observable<Ausgabe> {
+  updateAusgabe(ausgabe: any): Observable<Ausgabe> {
+    // Backend akzeptiert nur ISO Datum - Problem mit MongoDB und SpringBoot - da Konverter keine Timezone akzeptiert
+    // Lösung UTC-Datum in ISO String transformieren
+    const day = ausgabe.datum.getDate();
+    const month = ausgabe.datum.getMonth();
+    const year = ausgabe.datum.getFullYear();
+    const utcDate = new Date(Date.UTC(year, month, day, 0, 0, 0));
+
+    let ausgabeWithIsoDate: any = new Ausgabe(
+      ausgabe.expenseId,
+      ausgabe.name,
+      ausgabe.betrag,
+      ausgabe.kategorie,
+      ausgabe.datum
+    );
+
+    ausgabeWithIsoDate.datum = utcDate.toISOString();
+
     return this.httpClient
       .put<Ausgabe>(
-        `${this.backendAPI}/ausgaben/${ausgabe.expenseId}`,
-        ausgabe,
+        `${this.backendAPI}/ausgaben/${ausgabeWithIsoDate.expenseId}`,
+        ausgabeWithIsoDate,
         this.serviceHelperService.getHttpOptionPutAndPost()
       )
       .pipe(
@@ -50,8 +67,15 @@ export class AusgabenService {
   }
 
   addAusgabe(ausgabe: any): Observable<Ausgabe> {
-    // Backend akzeptiert nur ISO Datum
-    ausgabe.datum = ausgabe.datum!.toISOString();
+    // Backend akzeptiert nur ISO Datum - Problem mit MongoDB und SpringBoot - da Konverter keine Timezone akzeptiert
+    // Lösung UTC-Datum in ISO String transformieren
+    const day = ausgabe.datum.getDate();
+    const month = ausgabe.datum.getMonth();
+    const year = ausgabe.datum.getFullYear();
+    const utcDate = new Date(Date.UTC(year, month, day, 0, 0, 0));
+
+    ausgabe.datum = utcDate.toISOString();
+
     return this.httpClient
       .post<Ausgabe>(
         `${this.backendAPI}/ausgaben/`,
