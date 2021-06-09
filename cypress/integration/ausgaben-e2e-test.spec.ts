@@ -50,7 +50,6 @@ describe('Ausgaben E2E Test', () => {
         kategorie: 'Essen und Trinken',
         datum: '2021-06-14T22:00:00.000Z',
       });
-      expect(response!.statusCode).to.deep.equal(200);
     });
   });
 
@@ -101,8 +100,6 @@ describe('Ausgaben E2E Test', () => {
         kategorie: 'Essen und Trinken',
         datum: '2021-06-14T22:00:00.000Z',
       });
-      // check if the response status code is 200 and therefore successful
-      expect(response!.statusCode).to.deep.equal(200);
     });
   });
 
@@ -128,7 +125,6 @@ describe('Ausgaben E2E Test', () => {
     cy.wait('@delete').should(({ request, response }) => {
       expect(request.url).include('/api/ausgaben/60c0f25e698a3d5c99652925');
       expect(request.method).to.deep.equal('DELETE');
-      expect(response!.statusCode).to.deep.equal(200);
     });
   });
 });
