@@ -16,7 +16,7 @@ describe('Budgets E2E Test', () => {
     // find the field and fill out
     cy.get('#mat-input-0').clear().type('2000');
 
-    cy.intercept('PUT', 'api/budgets/1').as('update');
+    cy.intercept('PUT', 'api/budgets/*').as('update');
 
     // clicking button for updating the value
     cy.get('[type=submit]').first().click();
@@ -24,7 +24,7 @@ describe('Budgets E2E Test', () => {
     // confirm outgoing request
     cy.get('@update').its('request.body').should('deep.equal', {
       budget: 2000,
-      budgetId: '1',
+      budgetId: '60b8c2e0e27bd56ec44e30a4',
       kategorie: 'Ausbildung und Studium',
     });
 

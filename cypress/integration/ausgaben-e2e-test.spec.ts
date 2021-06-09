@@ -91,13 +91,13 @@ describe('Ausgaben E2E Test', () => {
     cy.get('[type=submit]').eq(1).click();
 
     cy.wait('@update').should(({ request, response }) => {
-      expect(request.url).include('/api/ausgaben/3');
+      expect(request.url).include('/api/ausgaben/60c0f25e698a3d5c99652925');
       expect(request.method).to.deep.equal('PUT');
       expect(request.body).to.deep.equal({
         userId: '1',
         name: 'Wein',
         betrag: 20,
-        expenseId: 3,
+        expenseId: '60c0f25e698a3d5c99652925',
         kategorie: 'Essen und Trinken',
         datum: '2021-06-14T22:00:00.000Z',
       });
@@ -126,7 +126,7 @@ describe('Ausgaben E2E Test', () => {
     cy.contains('Löschen').eq(0).click();
 
     cy.wait('@delete').should(({ request, response }) => {
-      expect(request.url).include('/api/ausgaben/3');
+      expect(request.url).include('/api/ausgaben/60c0f25e698a3d5c99652925');
       expect(request.method).to.deep.equal('DELETE');
       expect(response!.statusCode).to.deep.equal(200);
     });
