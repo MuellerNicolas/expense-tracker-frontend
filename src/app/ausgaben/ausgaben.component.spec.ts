@@ -138,7 +138,7 @@ describe('AusgabenComponent', () => {
         if (expansionPanel.classList.contains(ausgabe.expenseId!)) {
           // Get expected formatted Date
           let day: any = ausgabe.datum!.getDate();
-          let month: any = ausgabe.datum!.getMonth();
+          let month: any = ausgabe.datum!.getMonth() + 1;
           if (String(day).length == 1) day = '0' + day;
           if (String(month).length == 1) month = '0' + month;
           const expectedDate =
