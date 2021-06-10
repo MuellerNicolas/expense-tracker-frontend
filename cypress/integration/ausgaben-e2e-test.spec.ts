@@ -51,6 +51,13 @@ describe('Ausgaben E2E Test', () => {
         datum: '2021-06-14T22:00:00.000Z',
       });
     });
+
+    // validate the input fields
+    cy.get('#mat-expansion-panel-header-4').click();
+    cy.get('#mat-input-12').should('have.value', '14.6.2021');
+    cy.get('#mat-input-13').should('have.value', 'Pizza essen');
+    cy.get('#mat-input-14').should('have.value', '40');
+    cy.get('#mat-select-8').contains('Essen und Trinken');
   });
 
   it('should not add new expense with missing field', () => {
@@ -101,6 +108,10 @@ describe('Ausgaben E2E Test', () => {
         datum: '2021-06-14T22:00:00.000Z',
       });
     });
+    cy.get('#mat-expansion-panel-header-1').click();
+
+    // validate the input field
+    cy.get('#mat-input-5').should('have.value', '20');
   });
 
   it('should not update an existing expense with missing fields', () => {
@@ -126,5 +137,7 @@ describe('Ausgaben E2E Test', () => {
       expect(request.url).include('/api/ausgaben/60c0f25e698a3d5c99652925');
       expect(request.method).to.deep.equal('DELETE');
     });
+    //validate
+    cy.get('#mat-expansion-panel-header-1').should('not.exist');
   });
 });
