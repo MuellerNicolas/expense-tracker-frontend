@@ -22,11 +22,26 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import {
+  MatNativeDateModule,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CUSTOM_DATE_FORMATS } from './custom-date-format';
+
+// import {
+//   MAT_MOMENT_DATE_FORMATS,
+//   MomentDateAdapter,
+//   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+// } from '@angular/material-moment-adapter';
+// import {
+//   DateAdapter,
+//   MAT_DATE_FORMATS,
+// } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -62,7 +77,16 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     HttpClientModule,
     NgxChartsModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }],
+  providers: [
+    // { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
+    // { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
+    //   {
+    //     provide: DateAdapter,
+    //     useClass: MomentDateAdapter,
+    //     deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    //   },
+    //   { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
