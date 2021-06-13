@@ -2,7 +2,7 @@ import { Ausgabe } from './ausgabe.model';
 
 export const AUSGABEN: Ausgabe[] = [
   {
-    expenseId: '1',
+    expenseId: '60bc9d0817bb78102e5a0ceb ',
     name: 'Fahrradpumpe',
     betrag: 10,
     kategorie: 'Freizeit',
@@ -10,7 +10,7 @@ export const AUSGABEN: Ausgabe[] = [
     userId: '1',
   },
   {
-    expenseId: '2',
+    expenseId: '60bc9d5a17bb78102e5a0cee',
     name: 'Brot',
     betrag: 1.5,
     kategorie: 'Essen und Trinken',
@@ -18,7 +18,7 @@ export const AUSGABEN: Ausgabe[] = [
     userId: '1',
   },
   {
-    expenseId: '3',
+    expenseId: '60bc9b8b17bb78102e5a0ce9 ',
     name: 'Wein',
     betrag: 3.5,
     kategorie: 'Essen und Trinken',

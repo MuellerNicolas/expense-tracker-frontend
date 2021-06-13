@@ -235,6 +235,7 @@
       <br />
       <button
         mat-raised-button
+        class="update"
         type="submit"
         [disabled]="!ausgabeForm.form.valid"
         color="primary"
@@ -242,7 +243,12 @@
         Aktualisieren
       </button>
       <span class="einzug"></span>
-      <button mat-raised-button color="warn" (click)="delete(ausgabe)">
+      <button
+        mat-raised-button
+        class="delete"
+        color="warn"
+        (click)="delete(ausgabe)"
+      >
         Löschen
       </button>
     </form>
