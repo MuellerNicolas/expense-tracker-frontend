@@ -21,12 +21,7 @@
           #datum="ngModel"
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker
-          #picker
-          [(ngModel)]="neueAusgabe.datum"
-          name="datum"
-          ngDefaultControl
-        ></mat-datepicker>
+        <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="datum.errors?.required">
           {{ getErrorMessage(datum) }}
         </mat-error>
@@ -151,12 +146,7 @@
           #datum="ngModel"
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker
-          #picker
-          [(ngModel)]="ausgabe.datum"
-          name="datum"
-          ngDefaultControl
-        ></mat-datepicker>
+        <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="datum.errors">{{ getErrorMessage(datum) }}</mat-error>
       </mat-form-field>
       <br />
