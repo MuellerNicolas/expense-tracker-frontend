@@ -140,4 +140,6 @@ describe('Ausgaben E2E Test', () => {
     //validate
     cy.get('#mat-expansion-panel-header-1').should('not.exist');
   });
+
+  it('should display at least ten expenses', () => {});
 });

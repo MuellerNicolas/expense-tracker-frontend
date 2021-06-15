@@ -31,4 +31,5 @@ describe('Budgets E2E Test', () => {
     // validate the input field
     cy.get('#mat-input-0').should('have.value', '2000');
   });
+  it('should display all categories', () => {});
 });
