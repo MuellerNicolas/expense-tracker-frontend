@@ -13,9 +13,6 @@ export class ErfolgeComponent implements OnInit {
   budgetStreak: number = 0;
   badges: Badge[] = [];
 
-  // TODO Später löschen
-  value = 50;
-
   bpCols = {
     XSmall: 1,
     Small: 2,
