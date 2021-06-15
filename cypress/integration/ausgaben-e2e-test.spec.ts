@@ -19,8 +19,8 @@ describe('Ausgaben E2E Test', () => {
     //click the date picker
     cy.get('[type=button]').first().click();
 
-    //choose date 16
-    cy.contains('16').click();
+    //choose date 15
+    cy.contains('15').click();
 
     // find the other fields and fill out
     cy.get('#mat-input-1').type('Pizza essen');
@@ -76,8 +76,8 @@ describe('Ausgaben E2E Test', () => {
   it('should not add new expense with a negative "betrag" value', () => {
     //click the date picker
     cy.get('[type=button]').first().click();
-    //choose date 16
-    cy.contains('16').click();
+    //choose date 15
+    cy.contains('15').click();
     // find the other fields and fill out with negative betrag
     cy.get('#mat-input-1').type('Pizza essen');
     cy.get('#mat-input-2').type('-40');
