@@ -53,7 +53,8 @@ describe('Ausgaben E2E Test', () => {
     });
 
     // validate the input fields
-    cy.get('#mat-expansion-panel-header-4').click();
+    //cy.get('#mat-expansion-panel-header-4').click();
+    cy.contains('Pizza essen').click();
     cy.get('#mat-input-12').should('have.value', '14.6.2021');
     cy.get('#mat-input-13').should('have.value', 'Pizza essen');
     cy.get('#mat-input-14').should('have.value', '40');
