@@ -88,7 +88,20 @@ describe('Ausgaben E2E Test', () => {
 
   it('should update an existing expense', () => {
     cy.get('#mat-expansion-panel-header-1').click();
+
+    // change value at date field
+    cy.get('[type=button]').eq(1).click();
+    cy.contains('25').click();
+
+    // change value of name
+    cy.get('#mat-input-4').clear().type('Bahnticket');
+
+    // change value of amount
     cy.get('#mat-input-5').clear().type('20');
+
+    //change category
+    cy.get('#mat-select-2').click();
+    cy.get('#mat-option-14').click();
 
     cy.intercept('PUT', 'api/ausgaben/*', (req) => {
       req.body.datum = '2021-06-14T22:00:00.000Z';
@@ -102,10 +115,10 @@ describe('Ausgaben E2E Test', () => {
       expect(request.method).to.deep.equal('PUT');
       expect(request.body).to.deep.equal({
         userId: '1',
-        name: 'Wein',
+        name: 'Bahnticket',
         betrag: 20,
         expenseId: '60c0f25e698a3d5c99652925',
-        kategorie: 'Essen und Trinken',
+        kategorie: 'Mobilität',
         datum: '2021-06-14T22:00:00.000Z',
       });
     });
@@ -142,5 +155,7 @@ describe('Ausgaben E2E Test', () => {
     cy.get('#mat-expansion-panel-header-1').should('not.exist');
   });
 
-  it('should display at least ten expenses', () => {});
+  it('should display a field for adding new expenses and the last 3 expenses', () => {
+    cy.get('.mat-expansion-panel').should('have.length', 4);
+  });
 });

@@ -19,54 +19,5 @@
     "betrag": 3.5,
     "kategorie": "Essen und Trinken",
     "datum": "December 19, 1995 03:24:00"
-  },
-  {
-    "expenseId": "60c0f354698a3d5c99651230",
-    "name": "T-Shirt",
-    "betrag": 15,
-    "kategorie": "Bekleidung",
-    "datum": "December 18, 1995 03:24:00"
-  },
-  {
-    "expenseId": "60c0f25e698a3d5c99652652",
-    "name": "Hose",
-    "betrag": 30,
-    "kategorie": "Bekleidung",
-    "datum": "December 19, 1995 03:24:00"
-  },
-  {
-    "expenseId": "60c0f354698a3d5c99659437",
-    "name": "Aida",
-    "betrag": 1500,
-    "kategorie": "Reisen",
-    "datum": "December 18, 1995 03:24:00"
-  },
-  {
-    "expenseId": "60c0f25e698a3d5c99656203",
-    "name": "Bahn-Ticket",
-    "betrag": 13.5,
-    "kategorie": "Mobilität",
-    "datum": "December 19, 1995 03:24:00"
-  },
-  {
-    "expenseId": "60c0f25e698a3d5c99927582",
-    "name": "Haftplicht-Versicherung",
-    "betrag": 3.5,
-    "kategorie": "Versicherung",
-    "datum": "December 19, 1995 03:24:00"
-  },
-  {
-    "expenseId": "60c0f25e698a3d5c99658204",
-    "name": "Lehrbuch",
-    "betrag": 30,
-    "kategorie": "Ausbildung und Studium",
-    "datum": "December 19, 1995 03:24:00"
-  },
-  {
-    "expenseId": "60c0f25e698a3d5c99382944",
-    "name": "Strom",
-    "betrag": 350,
-    "kategorie": "Infrastruktur",
-    "datum": "December 19, 1995 03:24:00"
   }
 ]
