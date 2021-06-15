@@ -29,15 +29,13 @@ describe('Ausgaben E2E Test', () => {
     cy.get('#mat-option-2').click();
 
     // static date
-    cy.intercept('POST', 'api/ausgaben/', (req) => {
-      req.body.datum = '2021-06-14T22:00:00.000Z';
-    }).as('newExpenseRequest');
+    cy.intercept('POST', 'api/ausgaben/').as('newExpenseRequest');
 
     // submit
     cy.get('[type=submit]').first().click();
 
     // check request
-    cy.wait('@newExpenseRequest').should(({ request, response }) => {
+    cy.wait('@newExpenseRequest').should(({ request }) => {
       // check if the request aims at the correct collection
       expect(request.url).include('/api/ausgaben/');
       // check if the request executes the right http method
@@ -48,23 +46,23 @@ describe('Ausgaben E2E Test', () => {
         name: 'Pizza essen',
         betrag: 40,
         kategorie: 'Essen und Trinken',
-        datum: '2021-06-14T22:00:00.000Z',
+        datum: '2021-06-15T00:00:00.000Z',
       });
     });
 
     // validate the input fields
     //cy.get('#mat-expansion-panel-header-4').click();
     cy.contains('Pizza essen').click();
-    cy.get('#mat-input-12').should('have.value', '14.6.2021');
+    cy.get('#mat-input-12').should('have.value', '6/15/2021');
     cy.get('#mat-input-13').should('have.value', 'Pizza essen');
     cy.get('#mat-input-14').should('have.value', '40');
     cy.get('#mat-select-8').contains('Essen und Trinken');
   });
 
   it('should not add new expense with missing field', () => {
-    //click the date picker
+    // click the date picker
     cy.get('[type=button]').first().click();
-    //choose date 15
+    // choose date 15
     cy.contains('15').click();
     // don't input all fields
     cy.get('#mat-input-2').type('40');
@@ -74,9 +72,9 @@ describe('Ausgaben E2E Test', () => {
   });
 
   it('should not add new expense with a negative "betrag" value', () => {
-    //click the date picker
+    // click the date picker
     cy.get('[type=button]').first().click();
-    //choose date 15
+    // choose date 15
     cy.contains('15').click();
     // find the other fields and fill out with negative betrag
     cy.get('#mat-input-1').type('Pizza essen');
@@ -99,18 +97,16 @@ describe('Ausgaben E2E Test', () => {
     // change value of amount
     cy.get('#mat-input-5').clear().type('20');
 
-    //change category
+    // change category
     cy.get('#mat-select-2').click();
     cy.get('#mat-option-14').click();
 
-    cy.intercept('PUT', 'api/ausgaben/*', (req) => {
-      req.body.datum = '2021-06-14T22:00:00.000Z';
-    }).as('update');
+    cy.intercept('PUT', 'api/ausgaben/*').as('update');
 
-    //update
+    // update
     cy.get('[type=submit]').eq(1).click();
 
-    cy.wait('@update').should(({ request, response }) => {
+    cy.wait('@update').should(({ request }) => {
       expect(request.url).include('/api/ausgaben/60c0f25e698a3d5c99652925');
       expect(request.method).to.deep.equal('PUT');
       expect(request.body).to.deep.equal({
@@ -119,7 +115,7 @@ describe('Ausgaben E2E Test', () => {
         betrag: 20,
         expenseId: '60c0f25e698a3d5c99652925',
         kategorie: 'Mobilität',
-        datum: '2021-06-14T22:00:00.000Z',
+        datum: '1995-12-25T00:00:00.000Z',
       });
     });
     cy.get('#mat-expansion-panel-header-1').click();
@@ -147,11 +143,11 @@ describe('Ausgaben E2E Test', () => {
     cy.intercept('DELETE', 'api/ausgaben/*').as('delete');
     cy.contains('Löschen').eq(0).click();
 
-    cy.wait('@delete').should(({ request, response }) => {
+    cy.wait('@delete').should(({ request }) => {
       expect(request.url).include('/api/ausgaben/60c0f25e698a3d5c99652925');
       expect(request.method).to.deep.equal('DELETE');
     });
-    //validate
+    // validate
     cy.get('#mat-expansion-panel-header-1').should('not.exist');
   });
 
