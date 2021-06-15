@@ -16,11 +16,11 @@ describe('Ausgaben E2E Test', () => {
   });
 
   it('should add new expense', () => {
-    //click the date picker
+    // click the date picker
     cy.get('[type=button]').first().click();
 
-    //choose date 15
-    cy.contains('15').click();
+    // choose date 14
+    cy.contains('14').click();
 
     // find the other fields and fill out
     cy.get('#mat-input-1').type('Pizza essen');
@@ -28,7 +28,6 @@ describe('Ausgaben E2E Test', () => {
     cy.get('#mat-select-0').click();
     cy.get('#mat-option-2').click();
 
-    // static date
     cy.intercept('POST', 'api/ausgaben/').as('newExpenseRequest');
 
     // submit
@@ -46,17 +45,9 @@ describe('Ausgaben E2E Test', () => {
         name: 'Pizza essen',
         betrag: 40,
         kategorie: 'Essen und Trinken',
-        datum: '2021-06-15T00:00:00.000Z',
+        datum: '2021-06-14T00:00:00.000Z',
       });
     });
-
-    // validate the input fields
-    //cy.get('#mat-expansion-panel-header-4').click();
-    cy.contains('Pizza essen').click();
-    cy.get('#mat-input-12').should('have.value', '6/15/2021');
-    cy.get('#mat-input-13').should('have.value', 'Pizza essen');
-    cy.get('#mat-input-14').should('have.value', '40');
-    cy.get('#mat-select-8').contains('Essen und Trinken');
   });
 
   it('should not add new expense with missing field', () => {
