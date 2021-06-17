@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Budget } from './budget.model';
 import { BudgetsService } from './budgets.service';
+import getErrorMessageSharedModule from '../shared/eingabe-fehlermeldung';
 
 @Component({
   selector: 'budgets',
@@ -31,14 +32,7 @@ export class BudgetsComponent implements OnInit {
     this.budgetsService.updateBudget(budget).subscribe();
   }
 
-  getErrorMessage(formField: any) {
-    if (formField.hasError('required')) return 'Pflichtfeld';
-
-    if (
-      formField.hasError('min') &&
-      formField.control.errors.min.actual < formField.control.errors.min.min
-    ) {
-      return 'Der Wert darf nicht negativ sein';
-    } else return '';
+  getErrorMessage(formField: any): string {
+    return getErrorMessageSharedModule(formField);
   }
 }
