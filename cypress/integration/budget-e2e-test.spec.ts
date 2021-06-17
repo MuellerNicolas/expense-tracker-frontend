@@ -10,7 +10,7 @@ describe('Budgets E2E Test', () => {
     cy.wait(['@getBudgets']);
   });
 
-  it('should update the Budget', () => {
+  it('should update a Budget', () => {
     // commands below are waiting till the call is ready / data is present
     cy.get('#mat-expansion-panel-header-0').click();
 
@@ -31,6 +31,24 @@ describe('Budgets E2E Test', () => {
 
     // validate the input field
     cy.get('#mat-input-0').should('have.value', '2000');
+  });
+
+  it('should not update a budget with an empty betrag', () => {
+    // open budget
+    cy.get('#mat-expansion-panel-header-0').click();
+    // clear betrag
+    cy.get('#mat-input-0').clear();
+    // validate
+    cy.get('[type=submit]').first().should('be.disabled');
+  });
+
+  it('should not update a budget with a negative "betrag" value', () => {
+    // open budget
+    cy.get('#mat-expansion-panel-header-0').click();
+    // enter negative value
+    cy.get('#mat-input-0').clear().type('-30');
+    // validate
+    cy.get('[type=submit]').first().should('be.disabled');
   });
 
   it('should display all categories', () => {
