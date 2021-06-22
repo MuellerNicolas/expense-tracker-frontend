@@ -1,3 +1,5 @@
+import AusgabenPage from '../page-objects/ausgaben-page';
+
 describe('Ausgaben E2E Test', () => {
   beforeEach(() => {
     // Define Intercept for the Ausgabe Data
@@ -8,30 +10,34 @@ describe('Ausgaben E2E Test', () => {
       'getBudgets'
     );
 
+    // Page Object
+    const ausgabenPage = new AusgabenPage();
+
     // Visit the view Ausgabe on the website
-    cy.visit('/ausgaben');
+    ausgabenPage.visit();
 
     // wait for the intercepted data anwser
     cy.wait(['@getAusgaben', '@getBudgets']);
   });
 
   it('should add new expense', () => {
+    const ausgabenPage = new AusgabenPage();
     // click the date picker
-    cy.get('[type=button]').first().click();
+    ausgabenPage.getAddExpenseDatePicker().click();
 
     // choose date 14
-    cy.contains('14').click();
+    ausgabenPage.selectDateInAddExpenseDatePicker('14').click();
 
     // find the other fields and fill out
-    cy.get('#mat-input-1').type('Pizza essen');
-    cy.get('#mat-input-2').type('40');
-    cy.get('#mat-select-0').click();
-    cy.get('#mat-option-2').click();
+    ausgabenPage.getAddExpenseNameField().type('Pizza essen');
+    ausgabenPage.getAddExpenseBetragField().type('40');
+    ausgabenPage.getAddExpenseKategorieSelect().click();
+    ausgabenPage.getAddExpenseKategorieOption(2).click();
 
     cy.intercept('POST', 'api/ausgaben/').as('newExpenseRequest');
 
     // submit
-    cy.get('[type=submit]').first().click();
+    ausgabenPage.getAddExpenseSubmitButton().click();
 
     // check request
     cy.wait('@newExpenseRequest').should(({ request }) => {
