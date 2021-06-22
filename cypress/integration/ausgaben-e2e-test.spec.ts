@@ -57,28 +57,30 @@ describe('Ausgaben E2E Test', () => {
   });
 
   it('should not add new expense with missing field', () => {
+    const ausgabenPage = new AusgabenPage();
     // click the date picker
-    cy.get('[type=button]').first().click();
+    ausgabenPage.getAddExpenseDatePicker().click();
     // choose date 15
-    cy.contains('15').click();
+    ausgabenPage.selectDateInAddExpenseDatePicker('15').click();
     // don't input all fields
-    cy.get('#mat-input-2').type('40');
-    cy.get('#mat-select-0').click();
-    cy.get('#mat-option-2').click();
-    cy.get('[type=submit]').first().should('be.disabled');
+    ausgabenPage.getAddExpenseBetragField().type('40');
+    ausgabenPage.getAddExpenseKategorieSelect().click();
+    ausgabenPage.getAddExpenseKategorieOption(2).click();
+    ausgabenPage.getAddExpenseSubmitButton().should('be.disabled');
   });
 
   it('should not add new expense with a negative "betrag" value', () => {
+    const ausgabenPage = new AusgabenPage();
     // click the date picker
-    cy.get('[type=button]').first().click();
+    ausgabenPage.getAddExpenseDatePicker().click();
     // choose date 15
-    cy.contains('15').click();
+    ausgabenPage.selectDateInAddExpenseDatePicker('15').click();
     // find the other fields and fill out with negative betrag
-    cy.get('#mat-input-1').type('Pizza essen');
-    cy.get('#mat-input-2').type('-40');
-    cy.get('#mat-select-0').click();
-    cy.get('#mat-option-2').click();
-    cy.get('[type=submit]').first().should('be.disabled');
+    ausgabenPage.getAddExpenseNameField().type('Pizza essen');
+    ausgabenPage.getAddExpenseBetragField().type('-40');
+    ausgabenPage.getAddExpenseKategorieSelect().click();
+    ausgabenPage.getAddExpenseKategorieOption(2).click();
+    ausgabenPage.getAddExpenseSubmitButton().should('be.disabled');
   });
 
   it('should update an existing expense', () => {
