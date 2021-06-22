@@ -1,26 +1,33 @@
+import BudgetPage from '../page-objects/budget-page';
+
 describe('Budgets E2E Test', () => {
   beforeEach(() => {
     // Define Intercept for the Budget Data
     cy.intercept('GET', 'api/budgets/', { fixture: 'budgets' }).as(
       'getBudgets'
     );
+    // Page Object
+    const budgetPage = new BudgetPage();
+
     // Visit the view Budget on the website
-    cy.visit('/budgets');
+    budgetPage.visit();
+
     // wait for the intercepted data anwser
     cy.wait(['@getBudgets']);
   });
 
   it('should update a Budget', () => {
+    const budgetPage = new BudgetPage();
     // commands below are waiting till the call is ready / data is present
-    cy.get('#mat-expansion-panel-header-0').click();
+    budgetPage.getBudgetPanel(0).click();
 
     // find the field and fill out
-    cy.get('#mat-input-0').clear().type('2000');
+    budgetPage.getBetragInputField().clear().type('2000');
 
     cy.intercept('PUT', 'api/budgets/*').as('update');
 
     // clicking button for updating the value
-    cy.get('[type=submit]').first().click();
+    budgetPage.getSubmitField().click();
 
     // confirm outgoing request
     cy.get('@update').its('request.body').should('deep.equal', {
@@ -30,28 +37,31 @@ describe('Budgets E2E Test', () => {
     });
 
     // validate the input field
-    cy.get('#mat-input-0').should('have.value', '2000');
+    budgetPage.getBetragInputField().should('have.value', '2000');
   });
 
   it('should not update a budget with an empty betrag', () => {
+    const budgetPage = new BudgetPage();
     // open budget
-    cy.get('#mat-expansion-panel-header-0').click();
+    budgetPage.getBudgetPanel(0).click();
     // clear betrag
-    cy.get('#mat-input-0').clear();
+    budgetPage.getBetragInputField().clear();
     // validate
-    cy.get('[type=submit]').first().should('be.disabled');
+    budgetPage.getSubmitField().should('be.disabled');
   });
 
   it('should not update a budget with a negative "betrag" value', () => {
+    const budgetPage = new BudgetPage();
     // open budget
-    cy.get('#mat-expansion-panel-header-0').click();
+    budgetPage.getBudgetPanel(0).click();
     // enter negative value
-    cy.get('#mat-input-0').clear().type('-30');
+    budgetPage.getBetragInputField().clear().type('-30');
     // validate
-    cy.get('[type=submit]').first().should('be.disabled');
+    budgetPage.getSubmitField().should('be.disabled');
   });
 
   it('should display all categories', () => {
-    cy.get('.mat-expansion-panel').should('have.length', 9);
+    const budgetPage = new BudgetPage();
+    budgetPage.getAllBudgets().should('have.length', 9);
   });
 });
