@@ -26,7 +26,7 @@ describe('Ausgaben E2E Test', () => {
     ausgabenPage.getAddExpenseDatePicker().click();
 
     // choose date 14
-    ausgabenPage.selectDateInAddExpenseDatePicker('14').click();
+    ausgabenPage.getAddExpenseDateOfPicker('14').click();
 
     // find the other fields and fill out
     ausgabenPage.getAddExpenseNameField().type('Pizza essen');
@@ -61,7 +61,7 @@ describe('Ausgaben E2E Test', () => {
     // click the date picker
     ausgabenPage.getAddExpenseDatePicker().click();
     // choose date 15
-    ausgabenPage.selectDateInAddExpenseDatePicker('15').click();
+    ausgabenPage.getAddExpenseDateOfPicker('15').click();
     // don't input all fields
     ausgabenPage.getAddExpenseBetragField().type('40');
     ausgabenPage.getAddExpenseKategorieSelect().click();
@@ -74,7 +74,7 @@ describe('Ausgaben E2E Test', () => {
     // click the date picker
     ausgabenPage.getAddExpenseDatePicker().click();
     // choose date 15
-    ausgabenPage.selectDateInAddExpenseDatePicker('15').click();
+    ausgabenPage.getAddExpenseDateOfPicker('15').click();
     // find the other fields and fill out with negative betrag
     ausgabenPage.getAddExpenseNameField().type('Pizza essen');
     ausgabenPage.getAddExpenseBetragField().type('-40');
@@ -84,26 +84,27 @@ describe('Ausgaben E2E Test', () => {
   });
 
   it('should update an existing expense', () => {
-    cy.get('#mat-expansion-panel-header-1').click();
+    const ausgabenPage = new AusgabenPage();
+    ausgabenPage.getExistingExpensePanel(1).click();
 
     // change value at date field
-    cy.get('[type=button]').eq(1).click();
-    cy.contains('25').click();
+    ausgabenPage.getExistingExpenseDatePicker(1).click();
+    ausgabenPage.getExistingExpenseDateOfPicker('25').click();
 
     // change value of name
-    cy.get('#mat-input-4').clear().type('Bahnticket');
+    ausgabenPage.getExistingExpenseNameField().clear().type('Bahnticket');
 
     // change value of amount
-    cy.get('#mat-input-5').clear().type('20');
+    ausgabenPage.getExistingExpenseBetragField().clear().type('20');
 
     // change category
-    cy.get('#mat-select-2').click();
-    cy.get('#mat-option-14').click();
+    ausgabenPage.getExistingExpenseKategorieSelect().click();
+    ausgabenPage.getExistingExpenseKategorieOption(14).click();
 
     cy.intercept('PUT', 'api/ausgaben/*').as('update');
 
     // update
-    cy.get('[type=submit]').eq(1).click();
+    ausgabenPage.getExistingExpenseSubmitButton(1).click();
 
     cy.wait('@update').should(({ request }) => {
       expect(request.url).include('/api/ausgaben/60c0f25e698a3d5c99652925');
@@ -117,40 +118,42 @@ describe('Ausgaben E2E Test', () => {
         datum: '1995-12-25T00:00:00.000Z',
       });
     });
-    cy.get('#mat-expansion-panel-header-1').click();
+    ausgabenPage.getExistingExpensePanel(1).click();
 
     // validate the input field
-    cy.get('#mat-input-5').should('have.value', '20');
+    ausgabenPage.getExistingExpenseBetragField().should('have.value', '20');
   });
 
   it('should not update an existing expense with missing fields', () => {
-    cy.get('#mat-expansion-panel-header-1').click();
-    cy.get('#mat-input-5').clear();
-    cy.get('#mat-input-4').click();
-    cy.get('[type=submit]').eq(1).should('be.disabled');
+    const ausgabenPage = new AusgabenPage();
+    ausgabenPage.getExistingExpensePanel(1).click();
+    ausgabenPage.getExistingExpenseNameField().clear();
+    ausgabenPage.getExistingExpenseSubmitButton(1).should('be.disabled');
   });
 
   it('should not update an existing expense with a negative "betrag" value', () => {
-    cy.get('#mat-expansion-panel-header-1').click();
-    cy.get('#mat-input-5').clear().type('-30');
-    cy.get('#mat-input-4').click();
-    cy.get('[type=submit]').eq(1).should('be.disabled');
+    const ausgabenPage = new AusgabenPage();
+    ausgabenPage.getExistingExpensePanel(1).click();
+    ausgabenPage.getExistingExpenseBetragField().clear().type('-30');
+    ausgabenPage.getExistingExpenseSubmitButton(1).should('be.disabled');
   });
 
   it('should delete an expense', () => {
-    cy.get('#mat-expansion-panel-header-1').click();
+    const ausgabenPage = new AusgabenPage();
+    ausgabenPage.getExistingExpensePanel(1).click();
     cy.intercept('DELETE', 'api/ausgaben/*').as('delete');
-    cy.contains('Löschen').eq(0).click();
+    ausgabenPage.getExistingExpenseDeletetButton(1).click();
 
     cy.wait('@delete').should(({ request }) => {
       expect(request.url).include('/api/ausgaben/60c0f25e698a3d5c99652925');
       expect(request.method).to.deep.equal('DELETE');
     });
     // validate
-    cy.get('#mat-expansion-panel-header-1').should('not.exist');
+    ausgabenPage.getExistingExpensePanel(1).should('not.exist');
   });
 
   it('should display a field for adding new expenses and the last 3 expenses', () => {
-    cy.get('.mat-expansion-panel').should('have.length', 4);
+    const ausgabenPage = new AusgabenPage();
+    ausgabenPage.getAllPanels().should('have.length', 4);
   });
 });
